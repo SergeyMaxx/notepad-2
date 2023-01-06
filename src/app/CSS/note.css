@@ -1,0 +1,898 @@
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('../../../fonts/dm-sans-v11-latin-regular.woff2') format('woff2'),
+  url('../../../fonts/dm-sans-v11-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+  url('../../../fonts/dm-sans-v11-latin-700.woff2') format('woff2'),
+  url('../../../fonts/dm-sans-v11-latin-700.woff') format('woff');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #DCD4AF;
+}
+
+/*=========< nav >===========*/
+.nav {
+  position: absolute;
+  width: 1920px;
+  height: 109px;
+  left: 0;
+  top: 0;
+  background: #9AA489;
+  border-bottom: 2px solid #000;
+}
+
+.header-nav {
+  position: absolute;
+  left: 40.83%;
+  right: 40.78%;
+  top: 0;
+  bottom: 0;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 84px;
+  line-height: 109px;
+  color: #fff;
+}
+
+.nav__list {
+  position: absolute;
+  left: 1.2%;
+  right: 84.06%;
+  top: 24.77%;
+  bottom: 21.1%;
+}
+
+.nav__list_item {
+  position: absolute;
+  left: 0;
+  right: 54.06%;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  background: #D7D7D7;
+  border: 2px solid #000;
+  border-radius: 10px;
+  list-style: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.item-2 {
+  left: 54.06%;
+  right: 0;
+}
+
+.nav__list_item:hover {
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+}
+
+.nav__list_item:active {
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.46);
+}
+
+.nav__list_link {
+  width: 76px;
+  position: absolute;
+  left: 20.16%;
+  right: 20.93%;
+  top: 23.33%;
+  bottom: 25%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+  color: #000;
+  text-decoration: none;
+}
+
+.link-2 {
+  width: 85px;
+  left: 17.05%;
+  right: 17.05%;
+}
+
+.nav__button {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  left: 95.94%;
+  right: 1.41%;
+  top: 28.44%;
+  bottom: 24.77%;
+  border: none;
+  cursor: pointer;
+  background: transparent url("../../../icons/Settings.png") no-repeat;
+}
+
+/*=========< note-list >===============*/
+/*=====================================*/
+.note-list {
+  position: absolute;
+  width: 1640px;
+  height: 975px;
+  left: 280px;
+  top: 108px;
+}
+
+/*=============< note-list__grid >==========*/
+.note-list__grid {
+  position: absolute;
+  width: 1538px;
+  height: 716px;
+  left: 3.11%;
+  right: 3.11%;
+  top: 13.95%;
+  bottom: 12.62%;
+  box-sizing: content-box;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto auto auto auto auto;
+  column-gap: 27px;
+  row-gap: 31px;
+}
+
+.note-list__grid_item {
+  position: relative;
+  width: 286px;
+  height: 218px;
+  background: #FFFFFF;
+  border: 2px solid #1B1C1D;
+  border-radius: 10px;
+}
+
+.note-list__grid_item-header {
+  position: absolute;
+  width: 264px;
+  height: 40px;
+  left: 3.3%;
+  right: 3.85%;
+  top: 3%;
+  bottom: 78.18%;
+  padding: 0 10px;
+  background: #E8E8E8;
+  border-radius: 10px;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1B1C1D;
+  line-height: 20px;
+}
+
+.note-list__grid_item-body {
+  position: absolute;
+  width: 270px;
+  height: 121px;
+  left: 2.3%;
+  right: 2.8%;
+  top: 25.23%;
+  bottom: 19.27%;
+  background: #F9F9F6;
+  border: 1px solid #B7B7B3;
+  border-radius: 10px;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 9px 13px 0;
+  color: #908E8E;
+}
+
+.note-list__grid_item-body-hidden {
+  width: 242px;
+  height: 83px;
+  overflow: hidden;
+}
+
+.note-list__grid_item-body-hidden::before {
+  content: ''; /* Выводим пустой блок */
+  position: absolute; /* Абсолютное позиционирование */
+  left: 13px;
+  right: 13px; /* Устанавливает ширину блока */
+  bottom: 0; /* Положение от нижнего края */
+  height: 65px; /* Высота */
+  background: linear-gradient(to bottom, transparent, #fff 70%);
+  pointer-events: none; /* Не реагирует на мышь */
+}
+
+.note-list__grid_item-date {
+  position: absolute;
+  left: 10.84%;
+  right: 67.13%;
+  top: 70.91%;
+  bottom: 22.27%;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.note-list__grid_item-time {
+  position: absolute;
+  left: 74.13%;
+  right: 8.74%;
+  top: 70.91%;
+  bottom: 22.27%;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.favorite-off {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 5.24%;
+  right: 85.66%;
+  top: 83.94%;
+  bottom: 4.13%;
+  background-image: url("../../../icons/Star.svg");
+  cursor: pointer;
+}
+
+.favorite-on {
+  background-image: url("../../../icons/Gold star.svg");
+}
+
+.note-list__grid_item-trash {
+  position: absolute;
+  width: 20px;
+  height: 26px;
+  left: 87.76%;
+  right: 5.24%;
+  top: 83.94%;
+  bottom: 4.13%;
+  background-image: url("../../../icons/Trash.svg");
+  cursor: pointer;
+}
+
+/*============< note-list__add-note >==============*/
+.note-list__add-note {
+  position: absolute;
+  left: 3.11%;
+  right: 89.7%;
+  top: 4.92%;
+  bottom: 90.97%;
+  width: 118px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  box-sizing: content-box;
+  background: #D7D7D7;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.note-list__add-note:hover {
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+}
+
+.note-list__add-note:active {
+  box-shadow: 1px 1px 0 0 #000;
+}
+
+.note-list__add-note_plus {
+  position: absolute;
+  left: 2.54%;
+  right: 68.64%;
+  top: 7.5%;
+  bottom: 7.5%;
+  width: 34px;
+  height: 34px;
+  background: url("../../../icons/Plus.svg") no-repeat 0 0;
+}
+
+.note-list__add-note_new {
+  position: absolute;
+  left: 45.3%;
+  right: 11.11%;
+  top: 10%;
+  bottom: 12.5%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.modal-active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  width: 860px;
+  height: 560px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: #9AA489;
+  transform: scale(0.3);
+  transition: all 0.4s;
+}
+
+.content-active {
+  transform: scale(1);
+}
+
+.content-header {
+  width: 800px;
+  height: 60px;
+  position: absolute;
+  left: 3.31%;
+  right: 3.49%;
+  top: 5.36%;
+  bottom: 76.79%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  background: #DCD4AF;
+  border-radius: 8px;
+  border: 2px solid #000;
+  transition: all 0.3s;
+  padding: 20px;
+}
+
+.content-header:focus {
+  outline: none;
+  box-shadow: 0 0 5px 5px #796e57;
+}
+
+.content-body {
+  width: 800px;
+  height: 300px;
+  position: absolute;
+  left: 3.31%;
+  right: 3.49%;
+  top: 25%;
+  bottom: 17.86%;
+  background: #DCD4AF;
+  border-radius: 8px;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 21px;
+  border: 2px solid #000;
+  color: rgba(0, 0, 0, 0.66);
+  transition: all 0.3s;
+  padding: 20px;
+}
+
+.content-body:focus {
+  outline: none;
+  box-shadow: 0 0 5px 5px #796e57;
+}
+
+.content-body::placeholder {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.modal-button {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  left: 3.49%;
+  right: 89.53%;
+  top: 87.5%;
+  bottom: 5.36%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  border: 2px solid #DCD4AF;
+  border-radius: 8px;
+  background: #076058;
+  color: #DCD4AF;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-button:hover {
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+}
+
+.remaining-header {
+  position: absolute;
+  left: 4%;
+  top: 95px;
+  font-family: 'DM Sans', serif;
+}
+
+.remaining-body {
+  position: absolute;
+  left: 4%;
+  bottom: 92px;
+  font-family: 'DM Sans', serif;
+}
+
+/*==========< note-list__sort >===========*/
+.note-list__sort {
+  width: 160px;
+  height: 40px;
+  position: absolute;
+  left: 14.21%;
+  right: 74.82%;
+  top: 4.92%;
+  bottom: 90.97%;
+  background: #D7D7D7;
+  border: 2px solid #000;
+  border-radius: 25px;
+  box-sizing: content-box;
+  transition: all 0.3s;
+}
+
+.note-list__sort:hover {
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+}
+
+.note-list__sort:active {
+  box-shadow: 1px 1px 0 0 #000;
+}
+
+.note-list__sort_icon {
+  width: 22px;
+  height: 20px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  bottom: -25%;
+  background: url("../../../icons/Polygon down.svg") no-repeat 0 0;
+}
+
+.icon-up {
+  background: url("../../../icons/Polygon up.svg") no-repeat 0 0;
+}
+
+.note-list__sort_first {
+  width: 88px;
+  position: absolute;
+  left: 25px;
+  right: 23.35%;
+  top: 22.5%;
+  bottom: 25%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  color: #000;
+}
+
+/*==========< note-list__search >===========*/
+.note-list__search {
+  width: 500px;
+  height: 40px;
+  position: absolute;
+  left: 66.4%;
+  right: 3.11%;
+  top: 4.92%;
+  bottom: 90.97%;
+  background: #D7D7D7;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+
+.note-list__search:hover {
+  outline: none;
+  box-shadow: 0 0 3px 3px #796e57;
+}
+
+.note-list__search_icon {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  left: 2.8%;
+  right: 92%;
+  top: 17.5%;
+  bottom: 17.5%;
+  background-image: url("../../../icons/Glass.svg");
+}
+
+.note-list__search_input {
+  width: 415px;
+  height: 23px;
+  position: absolute;
+  left: 12.2%;
+  right: 72.4%;
+  top: 6px;
+  bottom: 25%;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 21px;
+  background: #D7D7D7;
+  border: none;
+  outline: none;
+}
+
+/*=======================================*/
+/*=======================================*/
+
+/*============< notePage >==============*/
+.note-page {
+  position: absolute;
+  width: 860px;
+  height: 560px;
+  left: 530px;
+  top: 260px;
+  background: #A5A993;
+  border: 2px solid #000;
+  border-radius: 20px;
+  box-sizing: content-box;
+}
+
+.note-page__header {
+  position: absolute;
+  width: 800px;
+  height: 100px;
+  left: 3.49%;
+  right: 3.49%;
+  top: 5.36%;
+  bottom: 76.79%;
+  padding: 17px 18px;
+  background: #D9D9D9;
+  border-radius: 20px;
+  font-family: 'DM Sans', "Segoe UI", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.note-page__body {
+  position: absolute;
+  width: 800px;
+  height: 300px;
+  left: 3.49%;
+  right: 3.49%;
+  top: 28.57%;
+  bottom: 17.86%;
+  padding: 25px;
+  background: #D9D9D9;
+  border-radius: 20px;
+  font-family: 'DM Sans', "Segoe UI", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.66);
+}
+
+.note-page__arrow {
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  left: 3.49%;
+  right: 89.53%;
+  top: 87.5%;
+  bottom: 5.36%;
+  background-image: url("../../../icons/Back arкow.svg");
+  cursor: pointer;
+}
+
+.note-page__edit {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 91.86%;
+  right: 3.49%;
+  top: 87.5%;
+  bottom: 5.36%;
+  background-image: url("../../../icons/Edit.svg");
+  cursor: pointer;
+}
+
+/*=============< side-bar >===========*/
+.side-bar {
+  position: absolute;
+  width: 280px;
+  height: 975px;
+  left: 0;
+  top: 109px;
+  background: #DCD4AF;
+  border-right: 2px solid #000;
+}
+
+.side-bar__list {
+  position: absolute;
+  width: 198px;
+  height: 194px;
+  left: 14.64%;
+  right: 14.64%;
+  top: 13.95%;
+  bottom: 66.15%;
+}
+
+.side-bar__list_all {
+  position: absolute;
+  width: 198px;
+  height: 34px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 69.43%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.side-bar__list_all:hover {
+  box-shadow: 0 0 10px #504533;
+}
+
+.side-bar__list_all:active {
+  box-shadow: 0 0 5px #504533;
+}
+
+.side-bar__list_all-folder {
+  position: absolute;
+  width: 44px;
+  height: 34px;
+  left: 0;
+  right: 18.64%;
+  top: 0;
+  bottom: 23.73%;
+  background: url("../../../icons/Folder.svg") no-repeat;
+}
+
+.side-bar__list_all-text {
+  position: absolute;
+  width: 75px;
+  height: 21px;
+  left: 35%;
+  right: 29.11%;
+  top: 7px;
+  bottom: 30.69%;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.side-bar__list_all-num {
+  position: absolute;
+  left: 165px;
+  right: 0;
+  top: 8px;
+  bottom: 30.69%;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.side-bar__list_favorites {
+  position: absolute;
+  width: 198px;
+  height: 34px;
+  left: 0;
+  right: 0;
+  top: 44.04%;
+  bottom: 38.34%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.side-bar__list_favorites:hover {
+  box-shadow: 0 0 10px #504533;
+}
+
+.side-bar__list_favorites:active {
+  box-shadow: 0 0 5px #504533;
+}
+
+.side-bar__list_favorites-folder {
+  position: absolute;
+  width: 44px;
+  height: 34px;
+  left: 0;
+  right: 77.6%;
+  top: 0;
+  bottom: 0;
+  background: url("../../../icons/Folder.svg") no-repeat;
+}
+
+.side-bar__list_favorites-text {
+  position: absolute;
+  width: 79px;
+  height: 21px;
+  left: 35%;
+  right: 27.79%;
+  top: 23.53%;
+  bottom: 15.02%;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.side-bar__list_favorites-num {
+  position: absolute;
+  left: 165px;
+  right: 0;
+  top: 23.53%;
+  bottom: 15.02%;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.side-bar__list_trash {
+  position: absolute;
+  height: 34px;
+  left: 5px;
+  right: 0;
+  top: 82.38%;
+  bottom: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.side-bar__list_trash:hover {
+  box-shadow: 0 0 10px #504533;
+}
+
+.side-bar__list_trash:active {
+  box-shadow: 0 0 5px #504533;
+}
+
+.side-bar__list_trash-bin {
+  position: absolute;
+  width: 26px;
+  height: 34px;
+  left: -4px;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  background: url("../../../icons/Trash.png") no-repeat;
+}
+
+.side-bar__list_trash-text {
+  position: absolute;
+  width: 51px;
+  height: 21px;
+  left: 34%;
+  right: 44.14%;
+  top: 20.59%;
+  bottom: 17.97%;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.side-bar__list_trash-num {
+  position: absolute;
+  left: 130px;
+  right: 0;
+  top: 20.59%;
+  bottom: 17.97%;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+/*=============< ModalConfirmation >==============*/
+.modal-confirmation {
+  position: absolute;
+  width: 380px;
+  height: 188px;
+  left: 38.17%;
+  right: 38.17%;
+  top: 40.41%;
+  bottom: 40.31%;
+  background: #5a6251;
+  border: 2px solid #dad2af;
+  border-radius: 10px;
+  transform: scale(0.3);
+  transition: all 0.4s;
+}
+
+.modal-confirmation-active {
+  transform: scale(1);
+}
+
+.modal-confirmation__question {
+  position: absolute;
+  width: 316px;
+  height: 48px;
+  left: 8.42%;
+  right: 8.42%;
+  top: 11.7%;
+  bottom: 62.77%;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #CFCFD0;
+}
+
+.modal-confirmation__delete {
+  position: absolute;
+  width: 316px;
+  height: 32px;
+  left: 8.42%;
+  right: 8.42%;
+  top: 46.81%;
+  bottom: 36.17%;
+  background: #352627;
+  border: 1px solid #6D3631;
+  border-radius: 5px;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #D35051;
+  cursor: pointer;
+}
+
+.modal-confirmation__cancel {
+  position: absolute;
+  width: 316px;
+  height: 32px;
+  left: 8.42%;
+  right: 8.42%;
+  top: 69.68%;
+  bottom: 13.3%;
+  background: #2F2F30;
+  border: 1px solid #49494A;
+  border-radius: 5px;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  color: #D6D6D7;
+  cursor: pointer;
+}
+
