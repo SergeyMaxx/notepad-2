@@ -20,24 +20,27 @@ const Note = ({note}) => {
   }
 
   return (
-    <div className="note-list__grid_item">
-      <h2 className="note-list__grid_item-header">
-        {note.header}
-      </h2>
-      <div
-        className="note-list__grid_item-body"
-        onClick={() => history.push(`/${note.id}`)}
-      >
-        <p className="note-list__grid_item-body-hidden">
-          {note.newNote}
-        </p>
+    <>
+      <div className="note-list__grid_item">
+        <h2 className="note-list__grid_item-header">
+          {note.header}
+        </h2>
+        <div
+          className="note-list__grid_item-body"
+          onClick={() => history.push(`/${note.id}`)}
+        >
+          <p className="note-list__grid_item-body-hidden">
+            {note.newNote}
+          </p>
+        </div>
+        <span className="note-list__grid_item-date">{note.date}</span>
+        <span className="note-list__grid_item-time">{note.time}</span>
+        <i
+          className={note.favoritesStatus ? 'favorite-off favorite-on' : 'favorite-off'}
+          onClick={favoritesToggle}
+        />
+        <i className="note-list__grid_item-trash" onClick={() => setModalActive(true)}/>
       </div>
-      <span className="note-list__grid_item-date">{note.date}</span>
-      <span className="note-list__grid_item-time">{note.time}</span>
-      <i className={note.favoritesStatus ? 'favorite-off favorite-on' : 'favorite-off'}
-        onClick={favoritesToggle}
-      />
-      <i className="note-list__grid_item-trash" onClick={() => setModalActive(true)}/>
       <ModalConfirmation
         active={modalActive}
         setActive={setModalActive}
@@ -45,7 +48,7 @@ const Note = ({note}) => {
         confirmationText="Are you sure you want to delete this note?"
         buttonText="Yes. Delete this note"
       />
-    </div>
+    </>
   )
 }
 

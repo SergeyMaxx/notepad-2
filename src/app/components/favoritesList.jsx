@@ -31,8 +31,7 @@ const FavoritesList = () => {
 
   return (
     <div className="note-list">
-      <AddNote/>
-      <Sort sort={handleSort}/>
+      <Sort sort={handleSort} styleFavorite='note-list__sort_favorite'/>
       <Search setSearchText={setSearchText}/>
       <div className="note-list__grid">
         {sortedNotes.map(note => <NoteFavorites key={note.id} note={note}/>)}
