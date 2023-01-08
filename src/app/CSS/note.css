@@ -134,7 +134,7 @@ body {
 .note-list {
   position: absolute;
   width: 1640px;
-  height: 975px;
+  min-height: 975px;
   left: 280px;
   top: 108px;
 }

@@ -38,7 +38,7 @@ const NoteBasket = ({note}) => {
         active={modalActive}
         setActive={setModalActive}
         remove={restoreNote}
-        confirmationText="are you sure you want to restore the note?"
+        confirmationText="Are you sure you want to restore the note?"
         buttonText="Yes. Restore this note"
       />
     </>
