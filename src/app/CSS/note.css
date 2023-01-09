@@ -49,6 +49,7 @@ body {
   font-size: 84px;
   line-height: 109px;
   color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.76);
 }
 
 .nav__list {
@@ -61,16 +62,27 @@ body {
 
 .nav__list_item {
   position: absolute;
+  width: 130px;
+  height: 58px;
   left: 0;
   right: 54.06%;
   top: 0;
   bottom: 0;
   box-sizing: border-box;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32);
+  text-shadow: 1px 1px 0 #c7ceb7;
   border-radius: 10px;
   list-style: none;
   transition: all 0.2s;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+  text-decoration: none;
 }
 
 .item-2 {
@@ -81,34 +93,14 @@ body {
 .nav__list_item:hover {
   border-radius: 10px;
   transform: translateY(-2px);
-  box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.46);
+  box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.46),
+  inset -2px -2px 5px #5a694d, inset 5px 5px 10px #cfd7b4;
 }
 
 .nav__list_item:active {
   transform: translateY(0);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32);
-}
-
-.nav__list_link {
-  width: 76px;
-  position: absolute;
-  left: 20.16%;
-  right: 20.93%;
-  top: 23.33%;
-  bottom: 25%;
-  font-family: 'DM Sans', serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 31px;
-  color: #000;
-  text-decoration: none;
-}
-
-.link-2 {
-  width: 85px;
-  left: 17.05%;
-  right: 17.05%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32),
+  inset -2px -2px 5px #5a694d, inset 5px 5px 10px #cfd7b4;
 }
 
 .nav__button {
@@ -160,7 +152,7 @@ body {
   position: relative;
   width: 286px;
   height: 218px;
-  background: #FFFFFF;
+  background: #d5d5d6;
   border: 2px solid #1B1C1D;
   border-radius: 10px;
   transition: all 0.3s;
@@ -168,7 +160,8 @@ body {
 
 .note-list__grid_item:hover {
   transform: translateY(-5px);
-  box-shadow: 3px 3px 5px 2px #796e57;
+  box-shadow: 3px 3px 5px 2px #796e57,
+  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;;
 }
 
 .note-list__grid_item-header {
@@ -180,13 +173,14 @@ body {
   top: 3%;
   bottom: 78.18%;
   padding: 0 10px;
-  background: #E8E8E8;
+  background: #d5d5d6;
   border-radius: 10px;
   font-family: 'DM Sans', "Segoe UI", serif;
   font-weight: 700;
   font-size: 16px;
   color: #1B1C1D;
   line-height: 20px;
+  box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;;
 }
 
 .note-list__grid_item-body {
@@ -198,7 +192,7 @@ body {
   top: 25.23%;
   bottom: 19.27%;
   background: #F9F9F6;
-  border: 1px solid #B7B7B3;
+  border: 1px solid #9d9d9b;
   border-radius: 10px;
   font-family: 'DM Sans', "Segoe UI", serif;
   font-style: normal;
@@ -288,7 +282,7 @@ body {
   bottom: 90.97%;
   width: 118px;
   height: 40px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 25px;
   box-sizing: content-box;
   background: #D7D7D7;
@@ -297,11 +291,12 @@ body {
 }
 
 .note-list__add-note:hover {
-  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-list__add-note:active {
-  box-shadow: 1px 1px 0 0 #000;
+  box-shadow: 1px 1px 0 0 #000, inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-list__add-note_plus {
@@ -325,6 +320,7 @@ body {
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 .modal {
@@ -468,18 +464,19 @@ body {
   top: 4.92%;
   bottom: 90.97%;
   background: #D7D7D7;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 25px;
   box-sizing: content-box;
   transition: all 0.3s;
 }
 
 .note-list__sort:hover {
-  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-list__sort:active {
-  box-shadow: 1px 1px 0 0 #000;
+  box-shadow: 1px 1px 0 0 #000, inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-list__sort_icon {
@@ -509,6 +506,7 @@ body {
   font-size: 20px;
   line-height: 21px;
   color: #000;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 /*==========< note-list__search >===========*/
@@ -523,12 +521,9 @@ body {
   background: #D7D7D7;
   border: 2px solid #000000;
   border-radius: 25px;
-  transition: all 0.3s;
-}
-
-.note-list__search:hover {
-  outline: none;
-  box-shadow: 0 0 3px 3px #796e57;
+  text-shadow: 1px 1px 0 #fff;
+  box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;
+  transition: all 0.2s ease-in-out;
 }
 
 .note-list__search_icon {
@@ -556,6 +551,11 @@ body {
   background: #D7D7D7;
   border: none;
   outline: none;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.note-list__search:focus {
+  box-shadow: inset 1px 1px 2px #9a9ba2, inset -1px -1px 2px #f1f1f1;
 }
 
 /*=======================================*/
@@ -665,7 +665,7 @@ body {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 69.43%;
+  bottom: 70%;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
@@ -692,7 +692,7 @@ body {
 
 .side-bar__list_all-text {
   position: absolute;
-  width: 75px;
+  width: 94px;
   height: 21px;
   left: 35%;
   right: 29.11%;
@@ -700,20 +700,22 @@ body {
   bottom: 30.69%;
   font-family: 'DM Sans', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
+  text-shadow: 1px 1px 0 #fff7e5;
 }
 
 .side-bar__list_all-num {
   position: absolute;
-  left: 165px;
+  left: 175px;
   right: 0;
   top: 8px;
   bottom: 30.69%;
   font-family: 'DM Sans', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
+  text-shadow: 1px 1px 0 #fff7e5;
 }
 
 .side-bar__list_favorites {
@@ -722,8 +724,8 @@ body {
   height: 34px;
   left: 0;
   right: 0;
-  top: 44.04%;
-  bottom: 38.34%;
+  top: 44%;
+  bottom: 38%;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
@@ -750,7 +752,7 @@ body {
 
 .side-bar__list_favorites-text {
   position: absolute;
-  width: 79px;
+  width: 98px;
   height: 21px;
   left: 35%;
   right: 27.79%;
@@ -758,29 +760,32 @@ body {
   bottom: 15.02%;
   font-family: 'DM Sans', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
+  text-shadow: 1px 1px 0 #fff7e5;
 }
 
 .side-bar__list_favorites-num {
   position: absolute;
-  left: 165px;
+  left: 180px;
   right: 0;
   top: 23.53%;
   bottom: 15.02%;
   font-family: 'DM Sans', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
+  text-shadow: 1px 1px 0 #fff7e5;
 }
+
 
 .side-bar__list_trash {
   position: absolute;
   height: 34px;
   left: 5px;
   right: 0;
-  top: 82.38%;
-  bottom: 0;
+  top: 88%;
+  bottom: 6%;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
@@ -798,7 +803,7 @@ body {
   position: absolute;
   width: 26px;
   height: 34px;
-  left: -4px;
+  left: 4px;
   right: 10px;
   top: 0;
   bottom: 0;
@@ -807,7 +812,7 @@ body {
 
 .side-bar__list_trash-text {
   position: absolute;
-  width: 51px;
+  width: 63px;
   height: 21px;
   left: 34%;
   right: 44.14%;
@@ -815,20 +820,22 @@ body {
   bottom: 17.97%;
   font-family: 'DM Sans', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
+  text-shadow: 1px 1px 0 #fff7e5;
 }
 
 .side-bar__list_trash-num {
   position: absolute;
-  left: 130px;
+  left: 140px;
   right: 0;
   top: 20.59%;
   bottom: 17.97%;
   font-family: 'DM Sans', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 21px;
+  text-shadow: 1px 1px 0 #fff7e5;
 }
 
 /*=============< ModalConfirmation >==============*/
