@@ -103,7 +103,7 @@ body {
   inset -2px -2px 5px #5a694d, inset 5px 5px 10px #cfd7b4;
 }
 
-.nav__button {
+.nav__settings {
   width: 42px;
   height: 42px;
   position: absolute;
@@ -117,8 +117,63 @@ body {
   transition: all 0.3s;
 }
 
-.nav__button:hover {
+.nav__settings:hover {
   transform: translateX(-10px) rotate(-30deg);
+}
+
+.nav__settings-body {
+  position: absolute;
+  width: 179px;
+  height: 112px;
+  right: 100px;
+  top: 31px;
+  background: #D9D9D9;
+  border: 1px solid #000;
+  border-radius: 12px;
+  text-shadow: 1px 1px 0 #fff;
+  box-shadow: inset 2px 2px 5px #707073, inset -5px -5px 10px #ffffff;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.nav__settings:focus + .nav__settings-body {
+  opacity: 1;
+}
+
+.nav__settings-body_item {
+  position: absolute;
+  width: 80px;
+  left: 7.26%;
+  right: 48.04%;
+  top: 5.36%;
+  bottom: 71.43%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.log {
+  width: 71px;
+  right: 53.07%;
+  top: 38.39%;
+  bottom: 38.39%;
+}
+
+.help {
+  width: 45px;
+  right: 67.6%;
+  top: 71.43%;
+  bottom: 5.36%;
+  z-index: 1;
+}
+
+.nav__settings-body_item:hover {
+  text-shadow: 0 0 1px #000;
 }
 
 /*=========< note-list >===============*/
@@ -161,7 +216,7 @@ body {
 .note-list__grid_item:hover {
   transform: translateY(-5px);
   box-shadow: 3px 3px 5px 2px #796e57,
-  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;;
+  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-list__grid_item-header {
@@ -180,7 +235,8 @@ body {
   font-size: 16px;
   color: #1B1C1D;
   line-height: 20px;
-  box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;;
+  box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 .note-list__grid_item-body {
@@ -347,8 +403,10 @@ body {
 
 .content {
   position: absolute;
-  width: 860px;
-  height: 560px;
+  width: 864px;
+  height: 564px;
+  left: 530px;
+  top: 260px;
   padding: 20px;
   border: 2px solid #000;
   border-radius: 10px;
@@ -522,7 +580,7 @@ body {
   border: 2px solid #000000;
   border-radius: 25px;
   text-shadow: 1px 1px 0 #fff;
-  box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;
+  box-shadow: inset 2px 2px 5px #707073, inset -5px -5px 10px #fff;
   transition: all 0.2s ease-in-out;
 }
 
@@ -555,7 +613,7 @@ body {
 }
 
 .note-list__search:focus {
-  box-shadow: inset 1px 1px 2px #9a9ba2, inset -1px -1px 2px #f1f1f1;
+  box-shadow: inset 1px 1px 2px #707073, inset -1px -1px 2px #fff;
 }
 
 /*=======================================*/
