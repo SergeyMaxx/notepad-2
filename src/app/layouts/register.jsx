@@ -5,7 +5,7 @@ const Register = () => {
   const history = useHistory()
 
   return (
-    <div className="login register">
+    <div className="login">
       <form onSubmit={e => e.preventDefault()}>
         <h1 className="login__header register__header">Registration</h1>
         <label>
@@ -13,6 +13,7 @@ const Register = () => {
             type="text"
             placeholder="Name"
             className="login__input"
+            required
           />
         </label>
         <label>
@@ -20,6 +21,7 @@ const Register = () => {
             type="text"
             placeholder="Email Address"
             className="login__input email"
+            required
           />
         </label>
         <label>
@@ -27,6 +29,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             className="login__input password password-register"
+            required
           />
         </label>
         <p className="login__account already">

@@ -13,6 +13,7 @@ const Login = () => {
             type="text"
             placeholder="Email Address"
             className="login__input"
+            required
           />
         </label>
         <label>
@@ -20,6 +21,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             className="login__input password"
+            required
           />
         </label>
         <p className="login__account">
