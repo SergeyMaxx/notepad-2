@@ -29,7 +29,7 @@ body {
 /*=========< nav >===========*/
 .nav {
   position: absolute;
-  width: 1920px;
+  width: 1903px;
   height: 109px;
   left: 0;
   top: 0;
@@ -54,7 +54,7 @@ body {
 
 .nav__list {
   position: absolute;
-  left: 1.2%;
+  left: 1.1%;
   right: 84.06%;
   top: 24.77%;
   bottom: 21.1%;
@@ -180,8 +180,8 @@ body {
 /*=====================================*/
 .note-list {
   position: absolute;
-  width: 1640px;
-  min-height: 975px;
+  width: 1622px;
+  height: 975px;
   left: 280px;
   top: 108px;
 }
@@ -191,9 +191,9 @@ body {
   position: absolute;
   width: 1538px;
   height: 716px;
-  left: 3.11%;
+  left: 43px;
   right: 3.11%;
-  top: 13.95%;
+  top: 11.5%;
   bottom: 12.62%;
   box-sizing: content-box;
   display: grid;
@@ -332,9 +332,9 @@ body {
 /*============< note-list__add-note >==============*/
 .note-list__add-note {
   position: absolute;
-  left: 3.11%;
+  left: 2.6%;
   right: 89.7%;
-  top: 4.92%;
+  top: 3.7%;
   bottom: 90.97%;
   width: 118px;
   height: 40px;
@@ -519,7 +519,7 @@ body {
   position: absolute;
   left: 14.21%;
   right: 74.82%;
-  top: 4.92%;
+  top: 3.7%;
   bottom: 90.97%;
   background: #D7D7D7;
   border: 1px solid #000;
@@ -572,12 +572,12 @@ body {
   width: 500px;
   height: 40px;
   position: absolute;
-  left: 66.4%;
+  left: 66.6%;
   right: 3.11%;
-  top: 4.92%;
+  top: 3.7%;
   bottom: 90.97%;
   background: #D7D7D7;
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   border-radius: 25px;
   text-shadow: 1px 1px 0 #fff;
   box-shadow: inset 2px 2px 5px #707073, inset -5px -5px 10px #fff;
@@ -1001,7 +1001,7 @@ body {
 
 /*===========< favorite-list >=============*/
 .note-list__sort_favorite {
-  left: 51px;
+  left: 42px;
 }
 
 /*===========< login >=============*/
