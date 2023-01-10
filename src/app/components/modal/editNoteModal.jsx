@@ -6,7 +6,7 @@ const EditNoteModal = ({active, setActive, editNote, valueHeader, valueNote}) =>
   const [userInputHeader, setUserInputHeader] = useState(valueHeader)
 
   const characterLimit = 800
-  const headerCharacterLimit = 40
+  const headerCharacterLimit = 60
 
   const handleChange = ({target}) => {
     if (characterLimit - target.value.length >= 0) {
