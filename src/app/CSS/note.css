@@ -1035,20 +1035,7 @@ body {
 }
 
 .restore_item-trash {
-  position: absolute;
-  width: 20px;
-  height: 26px;
-  left: 87.76%;
-  right: 5.24%;
-  top: 83.94%;
-  bottom: 4.13%;
   background-image: url("../../../icons/Restore.svg");
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.restore_item-trash:active {
-  transform: scale(1.2);
 }
 
 /*===========< favorite-list >=============*/

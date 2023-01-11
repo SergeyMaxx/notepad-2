@@ -32,7 +32,10 @@ const NoteBasket = ({note}) => {
         <span className="note-list__grid_item-time">{note.time}</span>
         <i className={note.favoritesStatus ? 'favorite-off favorite-on' : 'favorite-off'}
         />
-        <i className="restore_item-trash" onClick={() => setModalActive(true)}/>
+        <i
+          className="note-list__grid_item-trash restore_item-trash"
+          onClick={() => setModalActive(true)}
+        />
       </div>
       <ModalConfirmation
         active={modalActive}
