@@ -312,12 +312,22 @@ body {
   right: 85.66%;
   top: 83.94%;
   bottom: 4.13%;
-  background-image: url("../../../icons/Star.svg");
+  background: url("../../../icons/Star.svg") no-repeat;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .favorite-on {
-  background-image: url("../../../icons/Gold star.svg");
+  background: url("../../../icons/Gold star.svg") no-repeat;
+  transition: all 0.2s;
+}
+
+.favorite-off:active {
+  transform: scale(1.2);
+}
+
+.favorite-on:active {
+  transform: scale(1.2);
 }
 
 .note-list__grid_item-trash {
@@ -330,6 +340,11 @@ body {
   bottom: 4.13%;
   background-image: url("../../../icons/Trash.svg");
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.note-list__grid_item-trash:active {
+  transform: scale(1.2);
 }
 
 /*============< note-list__add-note >==============*/
@@ -596,6 +611,7 @@ body {
   top: 17.5%;
   bottom: 17.5%;
   background-image: url("../../../icons/Glass.svg");
+  transition: all 0.2s;
 }
 
 .note-list__search_input {
@@ -615,6 +631,10 @@ body {
   text-shadow: 1px 1px 0 #fff;
 }
 
+.note-list__search_input:focus + .note-list__search_icon {
+  transform: scale(0.8);
+}
+
 .note-list__search:focus {
   box-shadow: inset 1px 1px 2px #707073, inset -1px -1px 2px #fff;
 }
@@ -630,9 +650,11 @@ body {
   left: 530px;
   top: 260px;
   background: #A5A993;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 20px;
   box-sizing: content-box;
+  box-shadow: 0 0 0 1px #a99e75,
+  inset 2px 2px 10px  #22251a, inset -5px -5px 10px 2px #f6fdd6;
 }
 
 .note-page__header {
@@ -657,6 +679,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-page__body {
@@ -669,6 +693,7 @@ body {
   bottom: 17.86%;
   padding: 25px;
   background: #D9D9D9;
+  border: 1px solid #747476;
   border-radius: 20px;
   font-family: 'DM Sans', "Segoe UI", serif;
   font-style: normal;
@@ -677,18 +702,25 @@ body {
   line-height: 21px;
   color: rgba(0, 0, 0, 0.66);
   outline: none;
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+  inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
 
 .note-page__arrow {
-  width: 60px;
-  height: 40px;
+  width: 100px;
+  height: 50px;
   position: absolute;
   left: 3.49%;
   right: 89.53%;
   top: 87.5%;
   bottom: 5.36%;
-  background-image: url("../../../icons/Back arкow.svg");
+  background: url("../../../icons/Back arкow.svg") no-repeat;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.note-page__arrow:hover {
+  transform: scale(1.2);
 }
 
 .note-page__edit {
@@ -699,8 +731,13 @@ body {
   right: 3.49%;
   top: 87.5%;
   bottom: 5.36%;
-  background-image: url("../../../icons/Edit.svg");
+  background: url("../../../icons/Edit.svg") no-repeat;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.note-page__edit:hover {
+  transform: scale(1.2);
 }
 
 /*=============< side-bar >===========*/
