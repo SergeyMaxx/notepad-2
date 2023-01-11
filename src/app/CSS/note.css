@@ -1023,6 +1023,8 @@ body {
   top: 265px;
   background: #beb9a3;
   border-radius: 16px;
+  box-shadow: 0 0 0 1px #a99e75,
+  inset 2px 2px 8px #5e5a4b, inset -5px -5px 8px #eee7c9;
 }
 
 .login__header {
@@ -1050,7 +1052,7 @@ body {
   bottom: 55.1%;
   background: #D9D9D9;
   border-radius: 30px;
-  font-family: 'DM Sans', serif;
+  font-family: 'DM Sans', "Segoe UI", serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 19px;
@@ -1139,17 +1141,59 @@ body {
 
 /*===========< register >=============*/
 .register__header {
-  left: 23.25%;
-  right: 23%;
-  top: 13.14%;
-  bottom: 78.24%;
+  left: 23%;
+  right: 23.25%;
+  top: 8.43%;
+  bottom: 82.94%;
+}
+
+.errors {
+  position: absolute;
+  width: 320px;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  text-shadow: 1px 1px 0 #fad9d9;
+  color: #e72e31;
+}
+
+.register__errors-name {
+  left: 12.75%;
+  right: 16.5%;
+  top: 23.53%;
+  bottom: 72.35%;
+
+}
+
+.name-register {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 28.43%;
+  bottom: 61.37%;
+}
+
+.register__errors-email {
+  left: 12.75%;
+  right: 43.5%;
+  top: 41.18%;
+  bottom: 54.71%;
 }
 
 .email {
   left: 10%;
   right: 10%;
-  top: 49.22%;
-  bottom: 40.59%;
+  top: 46.08%;
+  bottom: 43.73%;
+}
+
+.register__errors-password {
+  left: 12.75%;
+  right: 20.5%;
+  top: 58.82%;
+  bottom: 37.06%;
 }
 
 .password-register {
