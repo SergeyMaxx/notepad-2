@@ -31,7 +31,7 @@ const BasketList = () => {
         buttonText="Yes. Clear"
       />
       <Search setSearchText={setSearchText}/>
-      <div className="note-list__grid basket-list__grid">
+      <div className="note-list__grid">
         {basketSearch.map(note => <NoteBasket key={note.id} note={note}/>)}
       </div>
     </div>

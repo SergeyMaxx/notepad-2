@@ -5,8 +5,6 @@ import Settings from './settings'
 const NavBar = () => {
   return (
     <nav className="nav">
-      <Settings/>
-      <h1 className="header-nav">Notepad</h1>
       <div className="nav__list">
         <Link className="nav__list_item" aria-current="page" to="/signIn">
           Sign in
@@ -15,6 +13,8 @@ const NavBar = () => {
           Sign up
         </Link>
       </div>
+      <h1 className="nav-header">Notepad</h1>
+      <Settings/>
     </nav>
   )
 }

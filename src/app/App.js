@@ -6,7 +6,7 @@ import Register from './layouts/register'
 import Notes from './layouts/notes'
 import SideBar from './components/sideBar'
 import DeletedNotes from './layouts/deletedNotes'
-import './CSS/note.css'
+import './SCSS/note.scss'
 import FavoritesNotes from './layouts/favoritesNotes'
 
 function App() {

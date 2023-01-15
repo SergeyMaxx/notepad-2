@@ -1,0 +1,976 @@
+@import "fonts";
+@import "global";
+@import "modal";
+@import "modal-confirmation";
+@import "erros";
+
+/*=========< nav >===========*/
+.nav {
+  position: absolute;
+  width: 1903px;
+  height: 109px;
+  left: 0;
+  top: 0;
+  background: #9AA489;
+  border-bottom: 2px solid #000;
+
+  &__list {
+    position: absolute;
+    left: 1.1%;
+    right: 84.06%;
+    top: 24.77%;
+    bottom: 21.1%;
+
+    &_item {
+      position: absolute;
+      width: 130px;
+      height: 58px;
+      left: 0;
+      right: 54.06%;
+      top: 0;
+      bottom: 0;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32);
+      text-shadow: 1px 1px 0 #c7ceb7;
+      border-radius: 10px;
+      list-style: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #000;
+      text-decoration: none;
+
+      &:hover {
+        border-radius: 10px;
+        transform: translateY(-2px);
+        box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.46),
+        inset -2px -2px 5px #5a694d, inset 5px 5px 10px #cfd7b4;
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32),
+        inset -2px -2px 5px #5a694d, inset 5px 5px 10px #cfd7b4;
+      }
+    }
+
+    .item-2 {
+      left: 54.06%;
+      right: 0;
+    }
+  }
+
+  &-header {
+    position: absolute;
+    left: 40.83%;
+    right: 40.78%;
+    top: 0;
+    bottom: 0;
+    font-family: 'DM Sans', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 84px;
+    line-height: 109px;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.76);
+  }
+
+  &__settings {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    left: 95.94%;
+    right: 1.41%;
+    top: 28.44%;
+    bottom: 24.77%;
+    border: none;
+    cursor: pointer;
+    background: transparent url("../../../icons/Settings.png") no-repeat;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateX(-10px) rotate(-30deg);
+    }
+
+    &:focus + .nav__settings-body {
+      opacity: 1;
+    }
+  }
+
+  &__settings-body {
+    position: absolute;
+    width: 179px;
+    height: 112px;
+    right: 100px;
+    top: 31px;
+    background: #D9D9D9;
+    border: 1px solid #000;
+    border-radius: 12px;
+    text-shadow: 1px 1px 0 #fff;
+    box-shadow: inset 2px 2px 5px #707073, inset -5px -5px 10px #fff;
+    transition: all 0.2s;
+    opacity: 0;
+
+    &_item {
+      position: absolute;
+      width: 80px;
+      left: 7.26%;
+      right: 48.04%;
+      top: 5.36%;
+      bottom: 71.43%;
+      font-family: 'DM Sans', serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26px;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        text-shadow: 0 0 1px #000;
+      }
+    }
+
+    .log {
+      width: 71px;
+      right: 53.07%;
+      top: 38.39%;
+      bottom: 38.39%;
+    }
+
+    .help {
+      width: 45px;
+      right: 67.6%;
+      top: 71.43%;
+      bottom: 5.36%;
+      z-index: 1;
+    }
+  }
+}
+
+/*=========< note-list >===============*/
+.note-list {
+  position: absolute;
+  width: 1622px;
+  height: 975px;
+  left: 280px;
+  top: 108px;
+
+  &__grid {
+    position: absolute;
+    width: 1538px;
+    height: 716px;
+    left: 43px;
+    right: 3.11%;
+    top: 11.5%;
+    bottom: 12.62%;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 27px;
+    row-gap: 31px;
+
+    &_item {
+      position: relative;
+      width: 286px;
+      height: 218px;
+      background: #d5d5d6;
+      border: 2px solid #1B1C1D;
+      border-radius: 10px;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 3px 3px 5px 2px #796e57,
+        inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+      }
+
+      &-header {
+        position: absolute;
+        width: 264px;
+        height: 40px;
+        left: 3.3%;
+        right: 3.85%;
+        top: 3%;
+        bottom: 78.18%;
+        padding: 0 10px;
+        background: #d5d5d6;
+        border-radius: 10px;
+        font-family: 'DM Sans', "Segoe UI", serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: #1B1C1D;
+        line-height: 20px;
+        box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;
+        text-shadow: 1px 1px 0 #fff;
+        overflow: hidden;
+      }
+
+      &-body {
+        position: absolute;
+        width: 270px;
+        height: 121px;
+        left: 2.3%;
+        right: 2.8%;
+        top: 25.23%;
+        bottom: 19.27%;
+        background: #ececec;
+        border: 1px solid #9d9d9b;
+        border-radius: 10px;
+        font-family: 'DM Sans', "Segoe UI", serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 9px 13px 0;
+        color: #808080;
+        cursor: pointer;
+        box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #fff;
+        text-shadow: 1px 1px 0 #fff;
+
+        &-hidden {
+          width: 242px;
+          height: 83px;
+          overflow: hidden;
+
+          &::before {
+            content: ''; /* Выводим пустой блок */
+            position: absolute; /* Абсолютное позиционирование */
+            left: 13px;
+            right: 13px; /* Устанавливает ширину блока */
+            bottom: 10px; /* Положение от нижнего края */
+            height: 55px; /* Высота */
+            background: linear-gradient(to bottom, transparent, #ececec 70%);
+            pointer-events: none; /* Не реагирует на мышь */
+          }
+        }
+      }
+
+      &-date {
+        position: absolute;
+        left: 10.84%;
+        right: 67.13%;
+        top: 70.91%;
+        bottom: 22.27%;
+        font-family: 'DM Sans', serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      &-time {
+        position: absolute;
+        left: 74.13%;
+        right: 8.74%;
+        top: 70.91%;
+        bottom: 22.27%;
+        font-family: 'DM Sans', serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      .favorite-off {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        left: 5.24%;
+        right: 85.66%;
+        top: 83.94%;
+        bottom: 4.13%;
+        background: url("../../../icons/Star.svg") no-repeat;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:active {
+          transform: scale(1.2);
+        }
+      }
+
+      .favorite-on {
+        background: url("../../../icons/Gold star.svg") no-repeat;
+        transition: all 0.2s;
+
+        &:active {
+          transform: scale(1.2);
+        }
+      }
+
+      &-trash {
+        position: absolute;
+        width: 20px;
+        height: 26px;
+        left: 87.76%;
+        right: 5.24%;
+        top: 83.94%;
+        bottom: 4.13%;
+        background-image: url("../../../icons/Trash.svg");
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:active {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  &__add-note {
+    position: absolute;
+    left: 2.6%;
+    right: 89.7%;
+    top: 3.7%;
+    bottom: 90.97%;
+    width: 118px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    box-sizing: content-box;
+    background: #D7D7D7;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+      inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+    }
+
+    &:active {
+      box-shadow: 1px 1px 0 0 #000, inset -2px -2px 5px #9a9ba2,
+      inset 5px 5px 10px #f1f1f1;
+    }
+
+    &_plus {
+      position: absolute;
+      left: 2.54%;
+      right: 68.64%;
+      top: 7.5%;
+      bottom: 7.5%;
+      width: 34px;
+      height: 34px;
+      background: url("../../../icons/Plus.svg") no-repeat 0 0;
+    }
+
+    &_new {
+      position: absolute;
+      left: 45.3%;
+      right: 11.11%;
+      top: 10%;
+      bottom: 12.5%;
+      font-family: 'DM Sans', serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      text-shadow: 1px 1px 0 #fff;
+    }
+  }
+
+  &__sort {
+    width: 160px;
+    height: 40px;
+    position: absolute;
+    left: 14.21%;
+    right: 74.82%;
+    top: 3.7%;
+    bottom: 90.97%;
+    background: #D7D7D7;
+    border: 1px solid #000;
+    border-radius: 25px;
+    box-sizing: content-box;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+      inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+    }
+
+    &:active {
+      box-shadow: 1px 1px 0 0 #000, inset -2px -2px 5px #9a9ba2,
+      inset 5px 5px 10px #f1f1f1;
+    }
+
+    &_icon {
+      width: 22px;
+      height: 20px;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      bottom: -25%;
+      background: url("../../../icons/Polygon down.svg") no-repeat 0 0;
+    }
+
+    .icon-up {
+      background: url("../../../icons/Polygon up.svg") no-repeat 0 0;
+    }
+
+    &_first {
+      width: 88px;
+      position: absolute;
+      left: 25px;
+      right: 23.35%;
+      top: 22.5%;
+      bottom: 25%;
+      font-family: 'DM Sans', serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 21px;
+      color: #000;
+      text-shadow: 1px 1px 0 #fff;
+    }
+  }
+
+  &__search {
+    width: 500px;
+    height: 40px;
+    position: absolute;
+    left: 66.6%;
+    right: 3.11%;
+    top: 3.7%;
+    bottom: 90.97%;
+    background: #D7D7D7;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    text-shadow: 1px 1px 0 #fff;
+    box-shadow: inset 2px 2px 5px #707073, inset -5px -5px 10px #fff;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      box-shadow: inset 1px 1px 2px #707073, inset -1px -1px 2px #fff;
+    }
+
+    &_input {
+      width: 415px;
+      height: 23px;
+      position: absolute;
+      left: 12.2%;
+      right: 72.4%;
+      top: 6px;
+      bottom: 25%;
+      font-family: 'DM Sans', "Segoe UI", serif;
+      font-weight: 400;
+      font-size: 21px;
+      background: #D7D7D7;
+      border: none;
+      outline: none;
+      text-shadow: 1px 1px 0 #fff;
+
+      &:focus + .note-list__search_icon {
+        transform: scale(0.8);
+      }
+    }
+
+    &_icon {
+      width: 26px;
+      height: 26px;
+      position: absolute;
+      left: 2.8%;
+      right: 92%;
+      top: 17.5%;
+      bottom: 17.5%;
+      background-image: url("../../../icons/Glass.svg");
+      transition: all 0.2s;
+    }
+  }
+}
+
+/*============< notePage >==============*/
+.note-page {
+  position: absolute;
+  width: 860px;
+  height: 560px;
+  left: 530px;
+  top: 260px;
+  background: #A5A993;
+  border: 1px solid #000;
+  border-radius: 20px;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 1px #a99e75,
+  inset 2px 2px 10px #22251a, inset -5px -5px 10px 2px #f6fdd6;
+
+  &__header {
+    position: absolute;
+    width: 800px;
+    height: 100px;
+    left: 3.49%;
+    right: 3.49%;
+    top: 5.36%;
+    bottom: 76.79%;
+    padding: 17px 18px;
+    background: #D9D9D9;
+    border: 1px solid #757576;
+    border-radius: 20px;
+    font-family: 'DM Sans', "Segoe UI", serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+    inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+  }
+
+  &__body {
+    position: absolute;
+    width: 800px;
+    height: 300px;
+    left: 3.49%;
+    right: 3.49%;
+    top: 28.57%;
+    bottom: 17.86%;
+    padding: 25px;
+    background: #D9D9D9;
+    border: 1px solid #747476;
+    border-radius: 20px;
+    font-family: 'DM Sans', "Segoe UI", serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: rgba(0, 0, 0, 0.66);
+    outline: none;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
+    inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+  }
+
+  &__arrow {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    left: 3.49%;
+    right: 89.53%;
+    top: 87.5%;
+    bottom: 5.36%;
+    background: url("../../../icons/Back arкow.svg") no-repeat;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__edit {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 91.86%;
+    right: 3.49%;
+    top: 87.5%;
+    bottom: 5.36%;
+    background: url("../../../icons/Edit.svg") no-repeat;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+/*=============< side-bar >===========*/
+.side-bar {
+  position: absolute;
+  width: 280px;
+  height: 975px;
+  left: 0;
+  top: 109px;
+  background: #DCD4AF;
+  border-right: 2px solid #000;
+
+  &__list {
+    position: absolute;
+    width: 230px;
+    height: 194px;
+    left: 7%;
+    right: 14.64%;
+    top: 13.95%;
+    bottom: 66.15%;
+
+    &_all {
+      position: absolute;
+      width: 230px;
+      height: 34px;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 70%;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &-folder {
+        position: absolute;
+        width: 44px;
+        height: 34px;
+        left: 0;
+        right: 18.64%;
+        top: 0;
+        bottom: 23.73%;
+        background: url("../../../icons/Folder.svg") no-repeat;
+      }
+
+      &-text {
+        position: absolute;
+        width: 94px;
+        height: 21px;
+        left: 25%;
+        right: 29.11%;
+        top: 7px;
+        bottom: 30.69%;
+        font-family: 'DM Sans', serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 21px;
+        text-shadow: 1px 1px 0 #fff7e5;
+      }
+
+      &-num {
+        position: absolute;
+        left: 165px;
+        right: 0;
+        top: 8px;
+        bottom: 30.69%;
+        font-family: 'DM Sans', serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 21px;
+        text-shadow: 1px 1px 0 #fff7e5;
+      }
+    }
+
+    &_favorites {
+      position: absolute;
+      width: 230px;
+      height: 34px;
+      left: 0;
+      right: 0;
+      top: 44%;
+      bottom: 38%;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &-folder {
+        position: absolute;
+        width: 44px;
+        height: 34px;
+        left: 0;
+        right: 77.6%;
+        top: 0;
+        bottom: 0;
+        background: url("../../../icons/Folder.svg") no-repeat;
+      }
+
+      &-text {
+        position: absolute;
+        width: 98px;
+        height: 21px;
+        left: 25%;
+        right: 27.79%;
+        top: 23.53%;
+        bottom: 15.02%;
+        font-family: 'DM Sans', serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 21px;
+        text-shadow: 1px 1px 0 #fff7e5;
+      }
+
+      &-num {
+        position: absolute;
+        left: 170px;
+        right: 0;
+        top: 23.53%;
+        bottom: 15.02%;
+        font-family: 'DM Sans', serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 21px;
+        text-shadow: 1px 1px 0 #fff7e5;
+      }
+    }
+
+    &_trash {
+      position: absolute;
+      width: 230px;
+      height: 34px;
+      left: 0;
+      right: 0;
+      top: 88%;
+      bottom: 6%;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &-bin {
+        position: absolute;
+        width: 26px;
+        height: 34px;
+        left: 10px;
+        right: 10px;
+        top: 0;
+        bottom: 0;
+        background: url("../../../icons/Trash.png") no-repeat;
+      }
+
+      &-text {
+        position: absolute;
+        width: 63px;
+        height: 21px;
+        left: 25%;
+        right: 44.14%;
+        top: 20.59%;
+        bottom: 17.97%;
+        font-family: 'DM Sans', serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 21px;
+        text-shadow: 1px 1px 0 #fff7e5;
+      }
+
+      &-num {
+        position: absolute;
+        left: 140px;
+        right: 0;
+        top: 20.59%;
+        bottom: 17.97%;
+        font-family: 'DM Sans', serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 21px;
+        text-shadow: 1px 1px 0 #fff7e5;
+      }
+    }
+
+    &_all:hover,
+    &_favorites:hover,
+    &_trash:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.46),
+      inset -2px -2px 5px #918b6d, inset 5px 5px 10px #f5edcd;
+    }
+
+    &_all:active,
+    &_favorites:active,
+    &_trash:active {
+      transform: translateY(0);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32),
+      inset -2px -2px 5px #918b6d, inset 5px 5px 10px #f5edcd;
+    }
+  }
+}
+
+/*===========< basket-list >=============*/
+.basket-list {
+  background: #ada78a;
+}
+
+.delete-all {
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.restore_item-trash {
+  background-image: url("../../../icons/Restore.svg");
+}
+
+/*===========< favorite-list >=============*/
+.note-list__sort_favorite {
+  left: 42px;
+}
+
+/*===========< login >=============*/
+.login {
+  position: absolute;
+  width: 400px;
+  height: 510px;
+  left: 760px;
+  top: 265px;
+  background: #beb9a3;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px #a99e75,
+  inset 2px 2px 8px #5e5a4b, inset -5px -5px 8px #eee7c9;
+
+  &__header {
+    position: absolute;
+    left: 37.75%;
+    right: 37.75%;
+    top: 13.14%;
+    bottom: 78.24%;
+    font-family: 'DM Sans', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    color: #fff;
+    text-shadow: 1px 1px 5px #000;
+
+    &.register__header {
+      left: 23%;
+      right: 23.25%;
+      top: 8.43%;
+      bottom: 82.94%;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 320px;
+    height: 52px;
+    left: 10%;
+    right: 10%;
+    top: 34.71%;
+    bottom: 55.1%;
+    background: #D9D9D9;
+    border-radius: 30px;
+    font-family: 'DM Sans', "Segoe UI", serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 19px;
+    border: none;
+    outline: none;
+    color: #000;
+    padding: 16px;
+    text-shadow: 1px 1px 0 #fff;
+    box-shadow: inset 2px 2px 5px #9a9ba2, inset -5px -5px 10px #f1f1f1;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      box-shadow: inset 1px 1px 2px #9a9ba2, inset -1px -1px 2px #f1f1f1;
+    }
+
+    &.password {
+      position: absolute;
+      width: 320px;
+      height: 52px;
+      top: 50.78%;
+      bottom: 39.02%;
+
+      &.password-register {
+        left: 10%;
+        right: 10%;
+        top: 63.73%;
+        bottom: 26.08%;
+      }
+    }
+
+    &.name-register {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 28.43%;
+      bottom: 61.37%;
+    }
+
+    &.email {
+      left: 10%;
+      right: 10%;
+      top: 46.08%;
+      bottom: 43.73%;
+    }
+  }
+
+  &__account {
+    position: absolute;
+    width: 157px;
+    left: 15%;
+    right: 45.25%;
+    top: 65.29%;
+    bottom: 30.98%;
+    font-family: 'DM Sans', serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 15px;
+    color: #6b6b6b;
+    text-shadow: 1px 1px 0 #d7d7d7;
+
+    &.signup {
+      width: 57px;
+      left: 70.25%;
+      text-shadow: 1px 1px 0 #d7d7d7;
+      transition: all 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.76);
+      }
+    }
+
+    &.already {
+      width: 179px;
+      left: 15%;
+      right: 40.25%;
+      top: 77.84%;
+      bottom: 18.43%;
+    }
+
+    &.signin {
+      width: 53px;
+      left: 71.75%;
+      right: 15%;
+      top: 77.84%;
+      bottom: 18.43%;
+      transition: all 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.76);
+      }
+    }
+  }
+
+  &__button {
+    position: absolute;
+    width: 320px;
+    height: 52px;
+    left: 10%;
+    right: 10%;
+    top: 81.96%;
+    bottom: 7.84%;
+    background: #D9D9D9;
+    border-radius: 30px;
+    font-family: 'DM Sans', serif;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 24px;
+    color: #747578;
+    border: none;
+    outline: none;
+    text-shadow: 1px 1px 0 #fff;
+    box-shadow: 2px 2px 5px #9a9ba2;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.46),
+      inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.32),
+      inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
+    }
+
+    &.button-reg {
+      left: 10%;
+      right: 10%;
+      top: 85.49%;
+      bottom: 4.31%;
+    }
+  }
+}

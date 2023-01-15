@@ -1,0 +1,132 @@
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.modal-active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  width: 864px;
+  height: 564px;
+  left: 530px;
+  top: 260px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: #9AA489;
+  transform: scale(0.3);
+  transition: all 0.4s;
+}
+
+.content-active {
+  transform: scale(1);
+}
+
+.content-header {
+  width: 800px;
+  height: 60px;
+  position: absolute;
+  left: 3.31%;
+  right: 3.49%;
+  top: 5.36%;
+  bottom: 76.79%;
+  font-family: 'DM Sans', "Segoe UI", serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  background: #DCD4AF;
+  border-radius: 8px;
+  border: 2px solid #000;
+  transition: all 0.3s;
+  padding: 20px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px 5px #796e57;
+  }
+}
+
+.content-body {
+  width: 800px;
+  height: 300px;
+  position: absolute;
+  left: 3.31%;
+  right: 3.49%;
+  top: 25%;
+  bottom: 17.86%;
+  background: #DCD4AF;
+  border-radius: 8px;
+  font-family: 'DM Sans', "Segoe UI", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 21px;
+  border: 2px solid #000;
+  color: rgba(0, 0, 0, 0.66);
+  transition: all 0.3s;
+  padding: 20px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px 5px #796e57;
+  }
+
+  &::placeholder {
+    font-weight: 700;
+    font-size: 24px;
+  }
+}
+
+.modal-button {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  left: 3.49%;
+  right: 89.53%;
+  top: 87.5%;
+  bottom: 5.36%;
+  font-family: 'DM Sans', serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  border: 2px solid #DCD4AF;
+  border-radius: 8px;
+  background: #076058;
+  color: #DCD4AF;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+  }
+}
+
+.remaining-header {
+  position: absolute;
+  left: 4%;
+  top: 95px;
+  font-family: 'DM Sans', serif;
+}
+
+.remaining-body {
+  position: absolute;
+  left: 4%;
+  bottom: 92px;
+  font-family: 'DM Sans', serif;
+}

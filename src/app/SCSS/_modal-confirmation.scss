@@ -1,0 +1,87 @@
+.modal-confirmation {
+  position: absolute;
+  width: 380px;
+  height: 188px;
+  left: 38.17%;
+  right: 38.17%;
+  top: 40.41%;
+  bottom: 40.31%;
+  background: #5a6251;
+  border: 2px solid #dad2af;
+  border-radius: 10px;
+  transform: scale(0.3);
+  transition: all 0.4s;
+}
+
+.modal-confirmation-active {
+  transform: scale(1);
+}
+
+.modal-confirmation__question {
+  position: absolute;
+  width: 316px;
+  height: 48px;
+  left: 8.42%;
+  right: 8.42%;
+  top: 11.7%;
+  bottom: 62.77%;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #CFCFD0;
+}
+
+.modal-confirmation__delete {
+  position: absolute;
+  width: 316px;
+  height: 32px;
+  left: 8.42%;
+  right: 8.42%;
+  top: 46.81%;
+  bottom: 36.17%;
+  background: #352627;
+  border: 1px solid #6D3631;
+  border-radius: 5px;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #D35051;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-confirmation__delete:hover {
+  background: #5b383c;
+}
+
+.modal-confirmation__cancel {
+  position: absolute;
+  width: 316px;
+  height: 32px;
+  left: 8.42%;
+  right: 8.42%;
+  top: 69.68%;
+  bottom: 13.3%;
+  background: #2F2F30;
+  border: 1px solid #49494A;
+  border-radius: 5px;
+  font-family: 'DM Sans', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+  color: #D6D6D7;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-confirmation__cancel:hover {
+  background: #565656;
+}
