@@ -122,19 +122,19 @@
       &:hover {
         text-shadow: 0 0 1px #000;
       }
-    }
-    .log {
-      width: 71px;
-      right: 53.07%;
-      top: 38.39%;
-      bottom: 38.39%;
-    }
-    .help {
-      width: 45px;
-      right: 67.6%;
-      top: 71.43%;
-      bottom: 5.36%;
-      z-index: 1;
+      &.log {
+        width: 71px;
+        right: 53.07%;
+        top: 38.39%;
+        bottom: 38.39%;
+      }
+      &.help {
+        width: 45px;
+        right: 67.6%;
+        top: 71.43%;
+        bottom: 5.36%;
+        z-index: 1;
+      }
     }
   }
 }
@@ -266,12 +266,12 @@
         &:active {
           transform: scale(1.2);
         }
-      }
-      .favorite-on {
-        background: url("../../../icons/Gold star.svg") no-repeat;
-        transition: all 0.2s;
-        &:active {
-          transform: scale(1.2);
+        &.favorite-on {
+          background: url("../../../icons/Gold star.svg") no-repeat;
+          transition: all 0.2s;
+          &:active {
+            transform: scale(1.2);
+          }
         }
       }
       &-trash {

@@ -387,13 +387,13 @@ body {
 .nav__settings-body_item:hover {
   text-shadow: 0 0 1px #000;
 }
-.nav__settings-body .log {
+.nav__settings-body_item.log {
   width: 71px;
   right: 53.07%;
   top: 38.39%;
   bottom: 38.39%;
 }
-.nav__settings-body .help {
+.nav__settings-body_item.help {
   width: 45px;
   right: 67.6%;
   top: 71.43%;
@@ -531,11 +531,11 @@ body {
 .note-list__grid_item .favorite-off:active {
   transform: scale(1.2);
 }
-.note-list__grid_item .favorite-on {
+.note-list__grid_item .favorite-off.favorite-on {
   background: url("../../../icons/Gold star.svg") no-repeat;
   transition: all 0.2s;
 }
-.note-list__grid_item .favorite-on:active {
+.note-list__grid_item .favorite-off.favorite-on:active {
   transform: scale(1.2);
 }
 .note-list__grid_item-trash {
