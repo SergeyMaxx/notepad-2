@@ -9,7 +9,7 @@ const NavBar = () => {
         <Link className="nav__list_item" aria-current="page" to="/signIn">
           Sign in
         </Link>
-        <Link className="nav__list_item item-2" to="/signUp">
+        <Link className="nav__list_item" to="/signUp">
           Sign up
         </Link>
       </div>

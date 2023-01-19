@@ -27,15 +27,19 @@ const NoteBasket = ({note}) => {
           <p className="note-list__grid_item-body-hidden">
             {note.newNote}
           </p>
+          <div className="data-block">
+            <span className="note-list__grid_item-date">{note.date}</span>
+            <span className="note-list__grid_item-time">{note.time}</span>
+          </div>
         </div>
-        <span className="note-list__grid_item-date">{note.date}</span>
-        <span className="note-list__grid_item-time">{note.time}</span>
-        <i className={note.favoritesStatus ? 'favorite-off favorite-on' : 'favorite-off'}
-        />
-        <i
-          className="note-list__grid_item-trash restore_item-trash"
-          onClick={() => setModalActive(true)}
-        />
+        <div className="box">
+          <i className={note.favoritesStatus ? 'favorite-off favorite-on' : 'favorite-off'}
+          />
+          <i
+            className="note-list__grid_item-trash restore_item-trash"
+            onClick={() => setModalActive(true)}
+          />
+        </div>
       </div>
       <ModalConfirmation
         active={modalActive}

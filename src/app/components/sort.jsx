@@ -10,11 +10,13 @@ const Sort = ({sort, styleFavorite}) => {
   }
 
   return (
-    <div className={`note-list__sort ${styleFavorite}`} onClick={changeSort}>
-      <i className={state ? 'note-list__sort_icon icon-up' : 'note-list__sort_icon'}/>
-      <span className="note-list__sort_first">
-        First new
-      </span>
+    <div className={`note-list__container_sort ${styleFavorite}`} onClick={changeSort}>
+      <span className="note-list__container_sort-first">First new</span>
+      <i className={
+        state
+          ? 'note-list__container_sort-icon note-list__container_sort-icon-up'
+          : 'note-list__container_sort-icon'
+      }/>
     </div>
   )
 }

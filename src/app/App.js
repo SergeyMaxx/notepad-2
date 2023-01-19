@@ -4,7 +4,6 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import Login from './layouts/login'
 import Register from './layouts/register'
 import Notes from './layouts/notes'
-import SideBar from './components/sideBar'
 import DeletedNotes from './layouts/deletedNotes'
 import './SCSS/note.scss'
 import FavoritesNotes from './layouts/favoritesNotes'
@@ -13,7 +12,6 @@ function App() {
   return (
     <>
       <NavBar/>
-      <SideBar/>
       <Switch>
         <Route path="/signIn" component={Login}/>
         <Route path="/signUp" component={Register}/>

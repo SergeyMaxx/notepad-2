@@ -1,11 +1,6 @@
-.modal-confirmation {
-  position: absolute;
+.confirm {
   width: 380px;
   height: 188px;
-  left: 38.17%;
-  right: 38.17%;
-  top: 40.41%;
-  bottom: 40.31%;
   background: #5a6251;
   border: 2px solid #dad2af;
   border-radius: 10px;
@@ -13,36 +8,27 @@
   transition: all 0.4s;
 }
 
-.modal-confirmation-active {
+.confirm-active {
   transform: scale(1);
 }
 
-.modal-confirmation__question {
-  position: absolute;
+.confirm__question {
+  display: inline-block;
   width: 316px;
   height: 48px;
-  left: 8.42%;
-  right: 8.42%;
-  top: 11.7%;
-  bottom: 62.77%;
   font-family: 'DM Sans', serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   color: #CFCFD0;
+  margin: 36px 0 0 32px;
 }
 
-.modal-confirmation__delete {
-  position: absolute;
+.confirm__delete {
+  display: block;
   width: 316px;
   height: 32px;
-  left: 8.42%;
-  right: 8.42%;
-  top: 46.81%;
-  bottom: 36.17%;
+  margin: 0 auto;
   background: #352627;
   border: 1px solid #6D3631;
   border-radius: 5px;
@@ -56,18 +42,15 @@
   transition: all 0.3s;
 }
 
-.modal-confirmation__delete:hover {
+.confirm__delete:hover {
   background: #5b383c;
 }
 
-.modal-confirmation__cancel {
-  position: absolute;
+.confirm__cancel {
+  display: block;
   width: 316px;
   height: 32px;
-  left: 8.42%;
-  right: 8.42%;
-  top: 69.68%;
-  bottom: 13.3%;
+  margin: 10px auto;
   background: #2F2F30;
   border: 1px solid #49494A;
   border-radius: 5px;
@@ -82,6 +65,6 @@
   transition: all 0.3s;
 }
 
-.modal-confirmation__cancel:hover {
+.confirm__cancel:hover {
   background: #565656;
 }

@@ -21,12 +21,10 @@
 }
 
 .content {
-  position: absolute;
   width: 864px;
   height: 564px;
-  left: 530px;
-  top: 260px;
-  padding: 20px;
+  padding: 30px;
+  margin: 120px 16px 0 0;
   border: 2px solid #000;
   border-radius: 10px;
   background: #9AA489;
@@ -41,11 +39,7 @@
 .content-header {
   width: 800px;
   height: 60px;
-  position: absolute;
-  left: 3.31%;
-  right: 3.49%;
-  top: 5.36%;
-  bottom: 76.79%;
+  margin-bottom: 4px;
   font-family: 'DM Sans', "Segoe UI", serif;
   font-style: normal;
   font-weight: 700;
@@ -64,12 +58,8 @@
 .content-body {
   width: 800px;
   height: 300px;
-  position: absolute;
-  left: 3.31%;
-  right: 3.49%;
-  top: 25%;
-  bottom: 17.86%;
   background: #DCD4AF;
+  margin-top: 28px;
   border-radius: 8px;
   font-family: 'DM Sans', "Segoe UI", serif;
   font-style: normal;
@@ -93,11 +83,7 @@
 .modal-button {
   width: 80px;
   height: 40px;
-  position: absolute;
-  left: 3.49%;
-  right: 89.53%;
-  top: 87.5%;
-  bottom: 5.36%;
+  margin-top: 46px;
   font-family: 'DM Sans', serif;
   font-style: normal;
   font-weight: 700;
@@ -114,15 +100,13 @@
 }
 
 .remaining-header {
-  position: absolute;
-  left: 4%;
-  top: 95px;
+  margin-left: 5px;
   font-family: 'DM Sans', serif;
 }
 
 .remaining-body {
   position: absolute;
   left: 4%;
-  bottom: 92px;
+  bottom: 95px;
   font-family: 'DM Sans', serif;
 }

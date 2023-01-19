@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {getFavoritesNotes} from '../Store/notes'
 import _ from 'lodash'
-import AddNote from './addNote'
 import Sort from './sort'
 import Search from './search'
 import NoteFavorites from './notes/noteFavorites'
+import SideBar from './sideBar'
 
 const FavoritesList = () => {
   const notesFavorites = useSelector(getFavoritesNotes())
@@ -31,10 +31,15 @@ const FavoritesList = () => {
 
   return (
     <div className="note-list">
-      <Sort sort={handleSort} styleFavorite='note-list__sort_favorite'/>
-      <Search setSearchText={setSearchText}/>
-      <div className="note-list__grid">
-        {sortedNotes.map(note => <NoteFavorites key={note.id} note={note}/>)}
+      <SideBar/>
+      <div className="note-list__wrapper">
+        <div className="favorite-list__container">
+          <Sort sort={handleSort} styleFavorite="note-list__sort_favorite"/>
+          <Search setSearchText={setSearchText}/>
+        </div>
+        <div className="note-list__grid">
+          {sortedNotes.map(note => <NoteFavorites key={note.id} note={note}/>)}
+        </div>
       </div>
     </div>
   )

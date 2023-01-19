@@ -6,6 +6,7 @@ import Note from './notes/note'
 import _ from 'lodash'
 import {useSelector} from 'react-redux'
 import {getNotes} from '../Store/notes'
+import SideBar from './sideBar'
 
 const NoteList = () => {
   const notes = useSelector(getNotes())
@@ -31,11 +32,16 @@ const NoteList = () => {
 
   return (
     <div className="note-list">
-      <AddNote/>
-      <Sort sort={handleSort}/>
-      <Search setSearchText={setSearchText}/>
-      <div className="note-list__grid">
-        {sortedNotes.map(note => <Note key={note.id} note={note}/>)}
+      <SideBar/>
+      <div className="note-list__wrapper">
+        <div className="note-list__container">
+          <AddNote/>
+          <Sort sort={handleSort}/>
+          <Search setSearchText={setSearchText}/>
+        </div>
+        <div className="note-list__grid">
+          {sortedNotes.map(note => <Note key={note.id} note={note}/>)}
+        </div>
       </div>
     </div>
   )

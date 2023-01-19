@@ -8,16 +8,16 @@ const ModalConfirmation = ({active, setActive, remove, confirmationText, buttonT
       onClick={() => setActive(false)}
     >
       <div
-        className={active ? 'modal-confirmation modal-confirmation-active' : 'modal-confirmation'}
+        className={active ? 'confirm confirm-active' : 'confirm'}
         onClick={e => e.stopPropagation()}
       >
-        <div className="modal-confirmation__question">
+        <div className="confirm__question">
           {confirmationText}
         </div>
-        <button className="modal-confirmation__delete" onClick={remove}>
+        <button className="confirm__delete" onClick={remove}>
           {buttonText}
         </button>
-        <button className="modal-confirmation__cancel" onClick={() => setActive(false)}>
+        <button className="confirm__cancel" onClick={() => setActive(false)}>
           Cancel
         </button>
       </div>

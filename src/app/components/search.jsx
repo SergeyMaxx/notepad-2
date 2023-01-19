@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 
 const Search = ({setSearchText}) => {
   return (
-    <div className="note-list__search">
+    <div className="note-list__container_search">
       <input
         type="text"
-        className="note-list__search_input"
+        className="note-list__container_search-input"
         onChange={e => setSearchText(e.target.value)}
-        placeholder="Search..."
+        placeholder="Search"
       />
-      <i className="note-list__search_icon"/>
+      <i className="note-list__container_search-icon"/>
     </div>
   )
 }

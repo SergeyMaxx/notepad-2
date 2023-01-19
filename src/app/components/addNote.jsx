@@ -6,9 +6,9 @@ const AddNote = () => {
 
   return (
     <>
-      <div className="note-list__add-note" onClick={() => setModalActive(true)}>
-        <i className="note-list__add-note_plus"/>
-        <span className="note-list__add-note_new">New</span>
+      <div className="note-list__container_add-note" onClick={() => setModalActive(true)}>
+        <i className="note-list__container_add-note-plus"/>
+        <span className="note-list__container_add-note-new">New</span>
       </div>
       <Modal active={modalActive} setActive={setModalActive}/>
     </>

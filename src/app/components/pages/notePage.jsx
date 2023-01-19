@@ -30,8 +30,10 @@ const NotePage = () => {
       <p className="note-page__body">
         {getById.newNote}
       </p>
-      <i className="note-page__arrow" onClick={() => history.push('/')}/>
-      <i className="note-page__edit" onClick={() => setModalActive(true)}/>
+      <div className="note-page__container">
+        <i className="note-page__container_arrow" onClick={() => history.push('/')}/>
+        <i className="note-page__container_edit" onClick={() => setModalActive(true)}/>
+      </div>
       <EditNoteModal
         active={modalActive}
         setActive={setModalActive}
