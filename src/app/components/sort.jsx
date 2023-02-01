@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
-const Sort = ({sort, styleFavorite}) => {
+const Sort = ({sort}) => {
   const [state, setState] = useState(false)
 
   const changeSort = () => {
@@ -10,7 +10,7 @@ const Sort = ({sort, styleFavorite}) => {
   }
 
   return (
-    <div className={`note-list__container_sort ${styleFavorite}`} onClick={changeSort}>
+    <div className="note-list__container_sort" onClick={changeSort}>
       <span className="note-list__container_sort-first">First new</span>
       <i className={
         state
@@ -22,8 +22,7 @@ const Sort = ({sort, styleFavorite}) => {
 }
 
 Sort.propTypes = {
-  sort: PropTypes.func.isRequired,
-  styleFavorite: PropTypes.string
+  sort: PropTypes.func.isRequired
 }
 
 export default Sort

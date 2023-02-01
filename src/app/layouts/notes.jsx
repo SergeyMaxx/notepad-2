@@ -9,8 +9,7 @@ const Notes = () => {
   const notes = useSelector(getNotes())
   const notesBasket = useSelector(getBasketNotes())
   const notesFavorites = useSelector(getFavoritesNotes())
-  const params = useParams()
-  const {noteId} = params
+  const {noteId} = useParams()
 
   useEffect(() => {
     localStorage.setItem('notes-react', JSON.stringify(notes))

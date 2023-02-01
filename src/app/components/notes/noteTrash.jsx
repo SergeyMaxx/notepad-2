@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import ModalConfirmation from '../modal/modalConfirmation'
 import {noteReturn} from '../../Store/notes'
 
-const NoteBasket = ({note}) => {
+const NoteTrash = ({note}) => {
   const history = useHistory()
   const [modalActive, setModalActive] = useState(false)
   const dispatch = useDispatch()
@@ -52,4 +52,4 @@ const NoteBasket = ({note}) => {
   )
 }
 
-export default NoteBasket
+export default NoteTrash

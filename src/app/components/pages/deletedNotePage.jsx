@@ -6,8 +6,7 @@ import {useHistory, useParams} from 'react-router-dom'
 const DeletedNotePage = () => {
   const notesBasket = useSelector(getBasketNotes())
   const history = useHistory()
-  const params = useParams()
-  const {deletedNoteId} = params
+  const {deletedNoteId} = useParams()
   const getById = notesBasket.find(note => note.id === deletedNoteId)
 
   return (

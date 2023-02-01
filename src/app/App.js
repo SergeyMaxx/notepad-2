@@ -7,19 +7,24 @@ import Notes from './layouts/notes'
 import DeletedNotes from './layouts/deletedNotes'
 import './SCSS/note.scss'
 import FavoritesNotes from './layouts/favoritesNotes'
+import AuthProvider from './hooks/useAuth'
+import {ToastContainer} from 'react-toastify'
 
 function App() {
   return (
     <>
-      <NavBar/>
-      <Switch>
-        <Route path="/signIn" component={Login}/>
-        <Route path="/signUp" component={Register}/>
-        <Route path="/basket/:deletedNoteId?" component={DeletedNotes}/>
-        <Route path="/favorites/:favoritesNoteId?" component={FavoritesNotes}/>
-        <Route path="/:noteId?" component={Notes}/>
-        <Redirect to="/"/>
-      </Switch>
+      <AuthProvider>
+        <NavBar/>
+        <Switch>
+          <Route path="/signIn" component={Login}/>
+          <Route path="/signUp" component={Register}/>
+          <Route path="/basket/:deletedNoteId?" component={DeletedNotes}/>
+          <Route path="/favorites/:favoritesNoteId?" component={FavoritesNotes}/>
+          <Route path="/:noteId?" component={Notes}/>
+          <Redirect to="/"/>
+        </Switch>
+      </AuthProvider>
+      <ToastContainer/>
     </>
   )
 }

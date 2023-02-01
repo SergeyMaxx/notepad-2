@@ -5,16 +5,22 @@ import Settings from './settings'
 const NavBar = () => {
   return (
     <nav className="nav">
-      <div className="nav__list">
-        <Link className="nav__list_item" aria-current="page" to="/signIn">
-          Sign in
-        </Link>
-        <Link className="nav__list_item" to="/signUp">
-          Sign up
-        </Link>
+      <div className="nav-row">
+        <ul className="nav-list">
+          <li className="nav-list__item">
+            <Link className="nav-list__link" to="/signIn">
+              Sign in
+            </Link>
+          </li>
+          <li className="nav-list__item">
+            <Link className="nav-list__link" to="/signUp">
+              Sign up
+            </Link>
+          </li>
+        </ul>
+        <h1 className="nav-header">Notepad</h1>
+        <Settings/>
       </div>
-      <h1 className="nav-header">Notepad</h1>
-      <Settings/>
     </nav>
   )
 }

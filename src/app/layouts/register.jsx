@@ -1,15 +1,26 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {validator} from '../utils/validator'
+import {useAuth} from '../hooks/useAuth'
 
 const Register = () => {
   const history = useHistory()
+  const {signUp} = useAuth()
   const [errors, setErrors] = useState({})
   const [data, setData] = useState({
+    name: '',
     email: '',
-    password: '',
-    name: ''
+    password: ''
   })
+
+  const handleChange = ({target}) => {
+    setData(prevState => ({
+      ...prevState,
+      [target.name]: target.value
+    }))
+    console.log(target.name)
+    console.log(target.value)
+  }
 
   const validatorConfig = {
     email: {
@@ -31,17 +42,6 @@ const Register = () => {
     }
   }
 
-  const handleChange = target => {
-    setData(prevState => ({
-      ...prevState,
-      [target.name]: target.value
-    }))
-  }
-
-  const onChange = ({target}) => {
-    handleChange({name: target.name, value: target.value})
-  }
-
   // useEffect(() => {
   //   validate()
   // }, [data])
@@ -52,10 +52,19 @@ const Register = () => {
     return Object.keys(errors).length !== 0
   }
 
-  const handleSubmit = e => {
+  const isValid = Object.keys(errors).length !== 0
+
+  const handleSubmit = async e => {
     e.preventDefault()
     if (validate()) return
-    console.log(data)
+
+    try {
+      await signUp(data)
+      history.push('/')
+
+    } catch (error) {
+      setErrors(error)
+    }
   }
 
   return (
@@ -64,7 +73,7 @@ const Register = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header register__header">Registration</h1>
-          <p className='errors errors-name'>{errors.name}</p>
+          <p className="errors errors-name">{errors.name}</p>
           <label>
             <input
               name="name"
@@ -72,12 +81,12 @@ const Register = () => {
               type="text"
               value={data.name}
               required
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Name"
               className="login-form__input name-register"
             />
           </label>
-          <p className='errors errors-email'>{errors.email}</p>
+          <p className="errors errors-email">{errors.email}</p>
           <label>
             <input
               name="email"
@@ -85,12 +94,12 @@ const Register = () => {
               type="text"
               value={data.email}
               required="required"
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Email Address"
               className="login-form__input email"
             />
           </label>
-          <p className='errors errors-password'>{errors.password}</p>
+          <p className="errors errors-password">{errors.password}</p>
           <label>
             <input
               name="password"
@@ -98,7 +107,7 @@ const Register = () => {
               type="password"
               value={data.password}
               required="required"
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Password"
               className="login-form__input password password-register"
             />
@@ -114,7 +123,11 @@ const Register = () => {
               Sign in
             </p>
           </div>
-          <button className="login-form__button button-reg" type="submit">
+          <button
+            className="login-form__button button-reg"
+            type="submit"
+            disabled={isValid}
+          >
             Sign up
           </button>
         </form>

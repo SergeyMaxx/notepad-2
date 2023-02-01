@@ -8,8 +8,7 @@ const NotePage = () => {
   const notes = useSelector(getNotes())
   const [modalActive, setModalActive] = useState(false)
   const history = useHistory()
-  const params = useParams()
-  const {noteId} = params
+  const {noteId} = useParams()
   const dispatch = useDispatch()
 
   const getById = notes.find(note => note.id === noteId)

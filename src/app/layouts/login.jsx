@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import {useAuth} from '../hooks/useAuth'
 
 const Login = () => {
   const history = useHistory()
+  const {logIn} = useAuth()
+  const [enterErrors, setEnterErrors] = useState(null)
+  const [errors, setErrors] = useState(false)
   const [data, setData] = useState({
     email: '',
     password: ''
@@ -13,11 +17,22 @@ const Login = () => {
       ...prevState,
       [target.name]: target.value
     }))
+    setEnterErrors(null)
+    setErrors(false)
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     console.log(data)
+
+    try {
+     await logIn(data)
+      history.push('/')
+
+    } catch (error) {
+      setEnterErrors(error.message)
+      setErrors(true)
+    }
   }
 
   return (
@@ -26,6 +41,7 @@ const Login = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header">Login</h1>
+          {enterErrors && <p className="errors errors-login">{enterErrors}</p>}
           <label>
             <input
               name="email"
@@ -59,7 +75,11 @@ const Login = () => {
               Sign up
             </p>
           </div>
-          <button className="login-form__button" type="submit">
+          <button
+            className={errors?'login-form__button-disabled':'login-form__button'}
+            type="submit"
+            disabled={errors}
+          >
             Sign in
           </button>
         </form>

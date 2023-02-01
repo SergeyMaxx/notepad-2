@@ -3,10 +3,10 @@ import {getBasketNotes, noteDeleteAll} from '../Store/notes'
 import {useDispatch, useSelector} from 'react-redux'
 import ModalConfirmation from './modal/modalConfirmation'
 import Search from './search'
-import NoteBasket from './notes/noteBasket'
+import NoteTrash from './notes/noteTrash'
 import SideBar from './sideBar'
 
-const BasketList = () => {
+const TrashList = () => {
   const [searchText, setSearchText] = useState('')
   const [modalActive, setModalActive] = useState(false)
   const notesBasket = useSelector(getBasketNotes())
@@ -23,7 +23,7 @@ const BasketList = () => {
     <div className="note-list basket-list">
       <SideBar/>
       <div className="note-list__wrapper">
-        <div className="favorite-list__container">
+        <div className="note-list__container">
           <button
             className="note-list__container_add-note delete-all"
             onClick={() => setModalActive(true)}
@@ -40,11 +40,11 @@ const BasketList = () => {
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
-          {basketSearch.map(note => <NoteBasket key={note.id} note={note}/>)}
+          {basketSearch.map(note => <NoteTrash key={note.id} note={note}/>)}
         </div>
       </div>
     </div>
   )
 }
 
-export default BasketList
+export default TrashList

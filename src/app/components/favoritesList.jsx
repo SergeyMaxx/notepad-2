@@ -33,8 +33,8 @@ const FavoritesList = () => {
     <div className="note-list">
       <SideBar/>
       <div className="note-list__wrapper">
-        <div className="favorite-list__container">
-          <Sort sort={handleSort} styleFavorite="note-list__sort_favorite"/>
+        <div className="note-list__container">
+          <Sort sort={handleSort}/>
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">

@@ -2,8 +2,10 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import {createNote} from '../../Store/notes'
+import useMockData from '../../utils/mockData'
 
 const Modal = ({active, setActive}) => {
+  const {initialize} = useMockData()
   const [userInput, setUserInput] = useState('')
   const [userInputHeader, setUserInputHeader] = useState('')
   const dispatch = useDispatch()
@@ -14,14 +16,19 @@ const Modal = ({active, setActive}) => {
   const addNote = (userInput, userInputHeader) => {
     if (userInput || userInputHeader) {
       dispatch(createNote({
-        id: Math.random().toString(36).substr(2, 9),
-        newNote: userInput,
+        id: Math.random().toString(36).slice(2),
         header: userInputHeader,
+        newNote: userInput,
         date: new Date().toLocaleDateString(),
         time: new Date().toLocaleTimeString(),
         favoritesStatus: false
       }))
     }
+  }
+
+  const handleAddNote = () => {
+
+    setActive(false)
   }
 
   const handleChange = ({target}) => {
@@ -40,6 +47,7 @@ const Modal = ({active, setActive}) => {
     addNote(userInput, userInputHeader)
     setUserInput('')
     setUserInputHeader('')
+    initialize()
   }
 
   return (
@@ -72,7 +80,7 @@ const Modal = ({active, setActive}) => {
           </small>
           <button
             className="modal-button"
-            onClick={() => setActive(false)}
+            onClick={handleAddNote}
           >
             Add
           </button>
