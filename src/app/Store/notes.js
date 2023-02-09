@@ -1,13 +1,20 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createAction, createSlice} from '@reduxjs/toolkit'
+import {setError} from './errors'
+import noteService from '../services/note.service'
 
 const noteSlice = createSlice({
   name: 'notes',
   initialState: {
     noteState: JSON.parse(localStorage.getItem('notes-react')) || [],
     basketState: JSON.parse(localStorage.getItem('notesBasket-react')) || [],
-    favoritesState: JSON.parse(localStorage.getItem('notesFavorites-react')) || []
+    favoritesState:JSON.parse(localStorage.getItem('notesFavorites-react')) || []
   },
   reducers: {
+    // received(state, action) {
+    //   state.noteState = action.payload
+    //   state.basketState = action.payload
+    //   state.favoritesState = action.payload
+    // },
     newNotes(state, action) {
       state.noteState.push(action.payload)
     },
@@ -100,6 +107,7 @@ const noteSlice = createSlice({
 
 const {reducer} = noteSlice
 const {
+  // received,
   newNotes,
   edit,
   remove,
@@ -111,6 +119,33 @@ const {
   deleteFavorites,
   editFavorites
 } = noteSlice.actions
+
+// export const loadNotes = payload => {
+//   return async dispatch => {
+//     try {
+//       const data = await noteService.create(payload)
+//       dispatch(received(data))
+//
+//     } catch (error) {
+//       dispatch(setError(error.message))
+//     }
+//   }
+// }
+//
+// const noteRequested = createAction('notes/noteRequested')
+//
+// export const createNote = task => {
+//   return async dispatch => {
+//     dispatch(noteRequested())
+//     try {
+//       const {data} = await noteService.create(task)
+//       dispatch(newNotes(data))
+//
+//     } catch (error) {
+//       dispatch(setError(error.message))
+//     }
+//   }
+// }
 
 export const getNotes = () => state => state.notesReducer.noteState
 export const getBasketNotes = () => state => state.notesReducer.basketState

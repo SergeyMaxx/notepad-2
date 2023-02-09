@@ -18,7 +18,7 @@ const DeletedNotePage = () => {
         {getById.newNote}
       </p>
       <div className="note-page__container">
-        <i className="note-page__container_arrow" onClick={() => history.push('/basket')}/>
+        <i className="note-page__container_arrow" onClick={() => history.push('/trash')}/>
       </div>
     </div>
   )

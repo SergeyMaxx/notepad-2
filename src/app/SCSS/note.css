@@ -135,6 +135,10 @@ body {
 }
 
 .confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   width: 380px;
   height: 188px;
   background: #5a6251;
@@ -149,7 +153,6 @@ body {
 }
 
 .confirm__question {
-  display: inline-block;
   width: 316px;
   height: 48px;
   font-family: "DM Sans", serif;
@@ -157,22 +160,20 @@ body {
   font-size: 16px;
   line-height: 19px;
   color: #CFCFD0;
-  margin: 36px 0 0 32px;
+  margin-top: 36px;
 }
 
 .confirm__delete {
-  display: block;
   width: 316px;
   height: 32px;
-  margin: 0 auto;
+  margin-bottom: 10px;
   background: #352627;
   border: 1px solid #6D3631;
   border-radius: 5px;
   font-family: "DM Sans", serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
-  text-align: center;
+  line-height: 20px;
   color: #D35051;
   cursor: pointer;
   transition: all 0.3s;
@@ -183,19 +184,15 @@ body {
 }
 
 .confirm__cancel {
-  display: block;
   width: 316px;
   height: 32px;
-  margin: 10px auto;
   background: #2F2F30;
   border: 1px solid #49494A;
   border-radius: 5px;
   font-family: "DM Sans", serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
-  align-items: center;
-  text-align: center;
+  line-height: 20px;
   color: #D6D6D7;
   cursor: pointer;
   transition: all 0.3s;
@@ -203,6 +200,38 @@ body {
 
 .confirm__cancel:hover {
   background: #565656;
+}
+
+.user-page {
+  width: 860px;
+  height: 560px;
+  background: #5a6251;
+  border: 2px solid #dad2af;
+  border-radius: 10px;
+  transform: scale(0.3);
+  transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-page-active {
+  transform: scale(1);
+}
+
+.profile-name {
+  color: #000;
+  text-shadow: 1px 1px 0 #82886c;
+  font-family: "DM Sans", serif;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.user-page-avatar {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
 }
 
 .errors {
@@ -292,6 +321,19 @@ body {
   column-gap: 30px;
   flex-wrap: wrap;
 }
+.nav-profile-name {
+  color: #000;
+  text-shadow: 1px 1px 0 #c7ceb7;
+  font-family: "DM Sans", serif;
+  font-weight: 700;
+  font-size: 30px;
+  cursor: pointer;
+}
+.nav-profile-avatar {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
 .nav-header {
   font-family: "DM Sans", serif;
   font-weight: 700;
@@ -360,7 +402,7 @@ body {
 .nav-settings-body.op {
   opacity: 1;
 }
-.nav-settings-body__item {
+.nav-settings-body__item:not(:last-child) {
   min-width: 80px;
   font-family: "DM Sans", serif;
   font-style: normal;
@@ -371,7 +413,7 @@ body {
   cursor: pointer;
   transition: all 0.2s;
 }
-.nav-settings-body__item:hover {
+.nav-settings-body__item:not(:last-child):hover {
   text-shadow: 0 0 1px #000;
 }
 .nav-settings-body__item:not(:last-child) {
@@ -481,9 +523,6 @@ body {
   text-shadow: 1px 1px 0 #fff7e5;
   margin: 1px 0 0 14px;
 }
-.note-list .side-bar__list_trash {
-  margin-left: 8px;
-}
 .note-list .side-bar__list_trash-bin {
   width: 26px;
   height: 34px;
@@ -492,7 +531,7 @@ body {
 .note-list .side-bar__list_trash-text {
   width: 63px;
   height: 21px;
-  margin-left: 23px;
+  margin-left: 15px;
   font-family: "DM Sans", serif;
   font-weight: 700;
   font-size: 20px;
@@ -959,7 +998,7 @@ body {
   transform: translateY(0);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.32), inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
 }
-.login-form__button.button-reg {
+.login-form .button-reg {
   margin: 20px auto 0;
 }
 @media (max-width: 1278px) {

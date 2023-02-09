@@ -66,6 +66,19 @@
     column-gap: 30px;
     flex-wrap: wrap;
   }
+  &-profile-name {
+    color: #000;
+    text-shadow: 1px 1px 0 #c7ceb7;
+    font-family: 'DM Sans', serif;
+    font-weight: 700;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  &-profile-avatar {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
   &-header {
     font-family: 'DM Sans', serif;
     font-weight: 700;
@@ -136,7 +149,7 @@
     &.op {
       opacity: 1;
     }
-    &__item {
+    &__item:not(:last-child) {
       min-width: 80px;
       font-family: 'DM Sans', serif;
       font-style: normal;
@@ -265,7 +278,7 @@
       }
       &_trash {
         @extend %side-bar-row;
-        margin-left: 8px;
+        //margin-left: 8px;
         &-bin {
           width: 26px;
           height: 34px;
@@ -274,7 +287,7 @@
         &-text {
           width: 63px;
           height: 21px;
-          margin-left: 23px;
+          margin-left: 15px;
           font-family: 'DM Sans', serif;
           font-weight: 700;
           font-size: 20px;
@@ -764,9 +777,9 @@
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.32),
         inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
       }
-      &.button-reg {
-        margin: 20px auto 0;
-      }
+    }
+    .button-reg {
+      margin: 20px auto 0;
     }
     &__button-disabled {
       @extend %login-form__button;

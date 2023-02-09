@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {validator} from '../utils/validator'
+import {useDispatch} from 'react-redux'
 import {useAuth} from '../hooks/useAuth'
 
 const Register = () => {
   const history = useHistory()
+  // const dispatch = useDispatch()
   const {signUp} = useAuth()
   const [errors, setErrors] = useState({})
   const [data, setData] = useState({
@@ -18,8 +20,7 @@ const Register = () => {
       ...prevState,
       [target.name]: target.value
     }))
-    console.log(target.name)
-    console.log(target.value)
+    setErrors({})
   }
 
   const validatorConfig = {
@@ -58,9 +59,10 @@ const Register = () => {
     e.preventDefault()
     if (validate()) return
 
+    // dispatch(signUp(data))
     try {
       await signUp(data)
-      history.push('/')
+      history.push('/notes')
 
     } catch (error) {
       setErrors(error)
@@ -73,7 +75,6 @@ const Register = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header register__header">Registration</h1>
-          <p className="errors errors-name">{errors.name}</p>
           <label>
             <input
               name="name"
@@ -124,7 +125,7 @@ const Register = () => {
             </p>
           </div>
           <button
-            className="login-form__button button-reg"
+            className={isValid ? 'login-form__button-disabled button-reg': 'login-form__button button-reg'}
             type="submit"
             disabled={isValid}
           >

@@ -22,7 +22,7 @@ const NoteTrash = ({note}) => {
         </h2>
         <div
           className="note-list__grid_item-body"
-          onClick={() => history.push(`/basket/${note.id}`)}
+          onClick={() => history.push(`/trash/${note.id}`)}
         >
           <p className="note-list__grid_item-body-hidden">
             {note.newNote}

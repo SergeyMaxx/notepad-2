@@ -12,7 +12,7 @@ const SideBar = () => {
   return (
     <div className="side-bar">
       <div className="side-bar__list">
-        <div className="side-bar__list_all" onClick={() => history.push('/')}>
+        <div className="side-bar__list_all" onClick={() => history.push('/notes')}>
           <i className="side-bar__list_all-folder"/>
           <p className="side-bar__list_all-text">All notes :</p>
           <p className="side-bar__list_all-num">{notes.length}</p>
@@ -22,7 +22,7 @@ const SideBar = () => {
           <p className="side-bar__list_favorites-text">Favorites :</p>
           <p className="side-bar__list_favorites-num">{notesFavorites.length}</p>
         </div>
-        <div className="side-bar__list_trash" onClick={() => history.push('/basket')}>
+        <div className="side-bar__list_trash" onClick={() => history.push('/trash')}>
           <i className="side-bar__list_trash-bin"/>
           <p className="side-bar__list_trash-text">Trash :</p>
           <p className="side-bar__list_trash-num">{notesBasket.length}</p>

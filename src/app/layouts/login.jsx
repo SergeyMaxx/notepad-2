@@ -1,12 +1,16 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {getAuthErrors, logIn} from '../Store/auth'
 import {useAuth} from '../hooks/useAuth'
 
 const Login = () => {
+  const [enterError, setEnterError] = useState(null)
+  const [errors, setErrors] = useState(false)
   const history = useHistory()
   const {logIn} = useAuth()
-  const [enterErrors, setEnterErrors] = useState(null)
-  const [errors, setErrors] = useState(false)
+  // const dispatch = useDispatch()
+  // const loginError = useSelector(getAuthErrors())
   const [data, setData] = useState({
     email: '',
     password: ''
@@ -17,20 +21,19 @@ const Login = () => {
       ...prevState,
       [target.name]: target.value
     }))
-    setEnterErrors(null)
+    setEnterError(null)
     setErrors(false)
   }
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log(data)
-
+    // dispatch(login({payload: data}))
     try {
-     await logIn(data)
-      history.push('/')
+      await logIn(data)
+      history.push('/notes')
 
     } catch (error) {
-      setEnterErrors(error.message)
+      setEnterError(error.message)
       setErrors(true)
     }
   }
@@ -41,7 +44,7 @@ const Login = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header">Login</h1>
-          {enterErrors && <p className="errors errors-login">{enterErrors}</p>}
+          {enterError && <p className="errors errors-login">{enterError}</p>}
           <label>
             <input
               name="email"
@@ -76,7 +79,7 @@ const Login = () => {
             </p>
           </div>
           <button
-            className={errors?'login-form__button-disabled':'login-form__button'}
+            className={enterError ? 'login-form__button-disabled' : 'login-form__button'}
             type="submit"
             disabled={errors}
           >

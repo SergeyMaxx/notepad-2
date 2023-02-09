@@ -2,10 +2,8 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import {createNote} from '../../Store/notes'
-import useMockData from '../../utils/mockData'
 
 const Modal = ({active, setActive}) => {
-  const {initialize} = useMockData()
   const [userInput, setUserInput] = useState('')
   const [userInputHeader, setUserInputHeader] = useState('')
   const dispatch = useDispatch()
@@ -26,11 +24,6 @@ const Modal = ({active, setActive}) => {
     }
   }
 
-  const handleAddNote = () => {
-
-    setActive(false)
-  }
-
   const handleChange = ({target}) => {
     if (characterLimit - target.value.length >= 0) {
       setUserInput(target.value)
@@ -47,7 +40,6 @@ const Modal = ({active, setActive}) => {
     addNote(userInput, userInputHeader)
     setUserInput('')
     setUserInputHeader('')
-    initialize()
   }
 
   return (
@@ -80,7 +72,7 @@ const Modal = ({active, setActive}) => {
           </small>
           <button
             className="modal-button"
-            onClick={handleAddNote}
+            onClick={() => setActive(false)}
           >
             Add
           </button>

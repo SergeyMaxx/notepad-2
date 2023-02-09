@@ -27,7 +27,7 @@ const Note = ({note}) => {
         </h2>
         <div
           className="note-list__grid_item-body"
-          onClick={() => history.push(`/${note.id}`)}
+          onClick={() => history.push(`/notes/${note.id}`)}
         >
           <p className="note-list__grid_item-body-hidden">
             {note.newNote}

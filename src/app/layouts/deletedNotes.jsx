@@ -16,7 +16,7 @@ const DeletedNotes = () => {
   }, [notes])
 
   useEffect(() => {
-    localStorage.setItem('notesBasket-react', JSON.stringify(notesBasket))
+    localStorage.setItem('notesTrash-react', JSON.stringify(notesBasket))
   }, [notesBasket])
 
   useEffect(() => {
