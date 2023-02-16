@@ -12,7 +12,6 @@ const NoteList = () => {
   const notes = useSelector(getNotes())
   const [searchText, setSearchText] = useState('')
   const [sortBy, setSortBy] = useState({iter: 'date', order: 'asc'})
-
   const notesSearch = notes.filter(note => note.header.toLowerCase().includes(searchText))
   const sortedNotes = _.orderBy(notesSearch, [sortBy.iter], [sortBy.order])
 

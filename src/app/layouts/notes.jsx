@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react'
 import NoteList from '../components/noteList'
 import {useDispatch, useSelector} from 'react-redux'
-import {getBasketNotes, getFavoritesNotes, getNotes, loadNotes} from '../Store/notes'
+import {getBasketNotes, getError, getFavoritesNotes, getLoading, getNotes, loadNotes} from '../Store/notes'
 import {useParams} from 'react-router-dom'
 import NotePage from '../components/pages/notePage'
+import NotesLoader from '../components/HOC/notesLoader'
 // import {getDataStatus} from '../Store/auth'
 
 const Notes = () => {
@@ -11,29 +12,35 @@ const Notes = () => {
   const notesBasket = useSelector(getBasketNotes())
   const notesFavorites = useSelector(getFavoritesNotes())
   const {noteId} = useParams()
-  // const dispatch = useDispatch()
-  // const dataStatus = useSelector(getDataStatus())
+  const dispatch = useDispatch()
+  const loading = useSelector(getLoading())
+  const error = useSelector(getError())
 
   useEffect(() => {
-    // if (!dataStatus) {
-    //   dispatch(loadNotes(notes))
-    // }
-    localStorage.setItem('notes-react', JSON.stringify(notes))
+    if (loading) {
+      dispatch(loadNotes())
+    }
   }, [notes])
 
   useEffect(() => {
-    // if (!dataStatus) {
-    //   dispatch(loadNotes(notesBasket))
-    // }
-    localStorage.setItem('notesBasket-react', JSON.stringify(notesBasket))
+    if (loading) {
+      dispatch(loadNotes())
+    }
   }, [notesBasket])
 
   useEffect(() => {
-    // if (!dataStatus) {
-    //   dispatch(loadNotes(notesFavorites))
-    // }
-    localStorage.setItem('notesFavorites-react', JSON.stringify(notesFavorites))
+    if (loading) {
+      dispatch(loadNotes())
+    }
   }, [notesFavorites])
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  // if (error) {
+  //   return <div>{error.message}</div>
+  // }
 
   return noteId ? <NotePage/> : <NoteList/>
 }

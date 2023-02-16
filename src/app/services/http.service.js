@@ -31,7 +31,7 @@ http.interceptors.request.use(async config => {
       }
 
       const accessToken = localStorageService.getAccessToken()
-      
+
       if (accessToken) {
         config.params = {...config.params, auth: accessToken}
       }
@@ -44,15 +44,20 @@ http.interceptors.request.use(async config => {
 )
 
 function transformData(data) {
-  return data && !data.id
-    ? Object.keys(data).map(key => ({...data[key]})) : data
+  if (data && !data.id) {
+    return Object.keys(data).map(key => ({...data[key]}))
+  } else if (data.id) {
+    return data
+  } else {
+    return []
+  }
 }
-
 
 http.interceptors.response.use(res => {
     if (configFile.isFireBase) {
       res.data = {content: transformData(res.data)}
     }
+    // res.data = {content: res.data}
     return res
   },
   function (error) {

@@ -5,18 +5,28 @@ import noteService from '../services/note.service'
 const noteSlice = createSlice({
   name: 'notes',
   initialState: {
-    noteState: JSON.parse(localStorage.getItem('notes-react')) || [],
-    basketState: JSON.parse(localStorage.getItem('notesBasket-react')) || [],
-    favoritesState:JSON.parse(localStorage.getItem('notesFavorites-react')) || []
+    noteState: [],
+    basketState: [],
+    favoritesState: [],
+    error: null,
+    loading: true,
+    dataLoaded: false
   },
   reducers: {
-    // received(state, action) {
-    //   state.noteState = action.payload
-    //   state.basketState = action.payload
-    //   state.favoritesState = action.payload
-    // },
+    getNotesStart(state) {
+      state.loading = true
+    },
+    getNotesSuccess(state, action) {
+      state.noteState = action.payload
+      state.dataLoaded = true
+      state.loading = false
+    },
+    getNotesFail(state, action) {
+      state.error = action.payload
+      state.loading = false
+    },
     newNotes(state, action) {
-      state.noteState.push(action.payload)
+      state.noteState.push(action.payload[0])
     },
     edit(state, action) {
       const noteIndex = state.noteState.findIndex(el => el.id === action.payload.id)
@@ -107,7 +117,9 @@ const noteSlice = createSlice({
 
 const {reducer} = noteSlice
 const {
-  // received,
+  getNotesStart,
+  getNotesSuccess,
+  getNotesFail,
   newNotes,
   edit,
   remove,
@@ -120,39 +132,75 @@ const {
   editFavorites
 } = noteSlice.actions
 
-// export const loadNotes = payload => {
-//   return async dispatch => {
-//     try {
-//       const data = await noteService.create(payload)
-//       dispatch(received(data))
-//
-//     } catch (error) {
-//       dispatch(setError(error.message))
-//     }
-//   }
-// }
-//
-// const noteRequested = createAction('notes/noteRequested')
-//
-// export const createNote = task => {
-//   return async dispatch => {
-//     dispatch(noteRequested())
-//     try {
-//       const {data} = await noteService.create(task)
-//       dispatch(newNotes(data))
-//
-//     } catch (error) {
-//       dispatch(setError(error.message))
-//     }
-//   }
-// }
+export function loadNotes() {
+  return async dispatch => {
+    dispatch(getNotesStart())
+    try {
+      const {content} = await noteService.get()
+      dispatch(getNotesSuccess(content))
+
+    } catch (error) {
+      dispatch(getNotesFail(error.message))
+      dispatch(setError(error.message))
+    }
+  }
+}
+
+const noteCreated = createAction('notes/noteCreated')
+const noteDeleted = createAction('notes/deleteNote')
+
+export function createNote(note) {
+  return async dispatch => {
+    dispatch(noteCreated(note))
+    try {
+      const {content} = await noteService.create(note)
+      dispatch(newNotes(content))
+
+    } catch (error) {
+      dispatch(getNotesFail(error.message))
+      dispatch(setError(error.message))
+    }
+  }
+}
+
+export function change(data) {
+  return async dispatch => {
+    try {
+      const {content} = await noteService.update(data)
+      dispatch(edit(content))
+
+    } catch (error) {
+      dispatch(getNotesFail(error.message))
+      dispatch(setError(error.message))
+    }
+  }
+}
+
+export function noteDelete(id) {
+  return async dispatch => {
+    dispatch(noteDeleted())
+    try {
+      const {content} = await noteService.remove({id})
+      if (content) {
+        dispatch(remove(id))
+      }
+
+    } catch (error) {
+      dispatch(getNotesFail(error.message))
+      dispatch(setError(error.message))
+    }
+  }
+}
+
 
 export const getNotes = () => state => state.notesReducer.noteState
 export const getBasketNotes = () => state => state.notesReducer.basketState
 export const getFavoritesNotes = () => state => state.notesReducer.favoritesState
-export const createNote = data => newNotes(data)
-export const change = data => edit(data)
-export const noteDelete = id => remove(id)
+export const getLoading = () => state => state.notesReducer.loading
+export const getError = () => state => state.notesReducer.error
+export const getDataStatus = () => state => state.notesReducer.dataLoaded
+// export const change = data => edit(data)
+// export const noteDelete = id => remove(id)
 export const noteDeleteAll = () => removeAll()
 export const noteReturn = id => restore(id)
 export const addFavorites = id => favorites(id)

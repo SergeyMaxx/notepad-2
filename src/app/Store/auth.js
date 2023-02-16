@@ -108,22 +108,23 @@ export const login = ({payload}) => {
   }
 }
 
-export const signUp = ({email, password, ...rest}) => {
+export const signUp = payload => {
   return async dispatch => {
     dispatch(authRequested())
     try {
-      const data = await authService.register({email, password})
+      const data = await authService.register(payload)
       localStorageService.setTokens(data)
       dispatch(authRequestSuccess({userId: data.localId}))
-      dispatch(createUser({
-          id: data.localId,
-          email,
-          image: `https://avatars.dicebear.com/api/avataaars/${(Math.random() + 1)
-            .toString(36)
-            .substring(7)}.svg`,
-          ...rest
-        })
-      )
+      history.push('/notes')
+      // dispatch(createUser({
+      //     id: data.localId,
+      //     email,
+      //     image: `https://avatars.dicebear.com/api/avataaars/${(Math.random() + 1)
+      //       .toString(36)
+      //       .substring(7)}.svg`,
+      //     ...rest
+      //   })
+      // )
 
     } catch (error) {
       dispatch(authRequestFailed(error.message))
@@ -139,19 +140,19 @@ export const logOut = () => {
   }
 }
 
-function createUser(payload) {
-  return async function (dispatch) {
-    dispatch(userCreateRequested())
-    try {
-      const {content} = await userService.create(payload)
-      dispatch(userCreated(content))
-      history.push('/notes')
-
-    } catch (error) {
-      dispatch(createUserFailed(error.message))
-    }
-  }
-}
+// function createUser(payload) {
+//   return async function (dispatch) {
+//     dispatch(userCreateRequested())
+//     try {
+//       const {content} = await userService.create(payload)
+//       dispatch(userCreated(content))
+//       history.push('/notes')
+//
+//     } catch (error) {
+//       dispatch(createUserFailed(error.message))
+//     }
+//   }
+// }
 
 export const loadUsersList = () => {
   return async dispatch => {

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import {createNote} from '../../Store/notes'
+import {getUserId} from '../../services/localStorage.service'
 
 const Modal = ({active, setActive}) => {
   const [userInput, setUserInput] = useState('')
@@ -19,7 +20,8 @@ const Modal = ({active, setActive}) => {
         newNote: userInput,
         date: new Date().toLocaleDateString(),
         time: new Date().toLocaleTimeString(),
-        favoritesStatus: false
+        favoritesStatus: false,
+        userId: getUserId()
       }))
     }
   }

@@ -1,24 +1,27 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {useEffect} from 'react'
 import PropTypes from 'prop-types'
-import {getDataStatus, loadUsersList} from '../../Store/auth'
+import {getDataStatus, loadNotes} from '../../Store/notes'
 
-const UsersLoader = ({children}) => {
+const NotesLoader = ({children}) => {
   const dataStatus = useSelector(getDataStatus())
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!dataStatus) dispatch(loadUsersList())
+    if (!dataStatus) {
+      dispatch(loadNotes())
+    }
   }, [])
-  if (!dataStatus) return 'Loading'
+
+  if (!dataStatus) return 'Loading...'
   return children
 }
 
-UsersLoader.propTypes = {
+NotesLoader.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ])
 }
 
-export default UsersLoader
+export default NotesLoader

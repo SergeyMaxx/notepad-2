@@ -9,7 +9,7 @@ const noteService = {
     return data
   },
   create: async payload => {
-    const {data} = await httpService.put(noteEndpoint + payload.id, payload)
+    const {data} = await httpService.post(noteEndpoint, payload)
     return data
   },
   getCurrentUser: async () => {
@@ -21,7 +21,11 @@ const noteService = {
       noteEndpoint + localStorageService.getUserId(), payload
     )
     return data
-  }
+  },
+  remove: async noteId => {
+    const {data} = await httpService.delete(noteEndpoint + noteId)
+    return data
+  },
 }
 
 export default noteService

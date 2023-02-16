@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import {useDispatch} from 'react-redux'
 
 const EditNoteModal = ({active, setActive, editNote, valueHeader, valueNote}) => {
   const [userInput, setUserInput] = useState(valueNote)
   const [userInputHeader, setUserInputHeader] = useState(valueHeader)
+  const dispatch = useDispatch()
 
   const characterLimit = 800
   const headerCharacterLimit = 60
@@ -21,7 +23,7 @@ const EditNoteModal = ({active, setActive, editNote, valueHeader, valueNote}) =>
 
   const handleSubmit = e => {
     e.preventDefault()
-    editNote(userInput, userInputHeader)
+    dispatch(editNote(userInput, userInputHeader))
   }
 
   return (
