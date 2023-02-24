@@ -9,7 +9,7 @@ const trashService = {
     return data
   },
   create: async payload => {
-    const {data} = await httpService.post(trashEndpoint, payload)
+    const {data} = await httpService.put(trashEndpoint + payload.id, payload)
     return data
   },
   getCurrentUser: async () => {
@@ -22,10 +22,14 @@ const trashService = {
     )
     return data
   },
-  remove: async deleteNote => {
-    const {data} = await httpService.delete(trashEndpoint + deleteNote)
+  remove: async noteId => {
+    const {data} = await httpService.delete(trashEndpoint + noteId)
     return data
   },
+  removeAll: async () => {
+    const {data} = await httpService.delete(trashEndpoint)
+    return data
+  }
 }
 
 export default trashService

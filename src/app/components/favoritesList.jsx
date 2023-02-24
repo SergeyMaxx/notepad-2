@@ -6,6 +6,7 @@ import Sort from './sort'
 import Search from './search'
 import NoteFavorites from './notes/noteFavorites'
 import SideBar from './sideBar'
+import {getUserId} from '../services/localStorage.service'
 
 const FavoritesList = () => {
   const notesFavorites = useSelector(getFavoritesNotes())
@@ -38,7 +39,9 @@ const FavoritesList = () => {
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
-          {sortedNotes.map(note => <NoteFavorites key={note.id} note={note}/>)}
+          {sortedNotes.filter(none => none.userId === getUserId()).map(note => (
+            <NoteFavorites key={note.id} note={note}/>
+          ))}
         </div>
       </div>
     </div>

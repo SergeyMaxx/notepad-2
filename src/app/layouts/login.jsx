@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import {getAuthErrors, logIn} from '../Store/auth'
 import {useAuth} from '../hooks/useAuth'
 
 const Login = () => {
@@ -9,8 +7,6 @@ const Login = () => {
   const [errors, setErrors] = useState(false)
   const history = useHistory()
   const {logIn} = useAuth()
-  // const dispatch = useDispatch()
-  // const loginError = useSelector(getAuthErrors())
   const [data, setData] = useState({
     email: '',
     password: ''
@@ -27,7 +23,6 @@ const Login = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // dispatch(login({payload: data}))
     try {
       await logIn(data)
       history.push('/notes')

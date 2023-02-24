@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {validator} from '../utils/validator'
-import {useDispatch} from 'react-redux'
 import {useAuth} from '../hooks/useAuth'
 
 const Register = () => {
   const history = useHistory()
-  // const dispatch = useDispatch()
   const {signUp} = useAuth()
   const [errors, setErrors] = useState({})
   const [data, setData] = useState({
@@ -58,8 +56,6 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     if (validate()) return
-
-    // dispatch(signUp(data))
     try {
       await signUp(data)
       history.push('/notes')

@@ -1,23 +1,34 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import ModalConfirmation from '../modal/modalConfirmation'
-import {addFavorites, noteDelete, toggleFavorites} from '../../Store/notes'
+import {addFavorites, noteDelete, removeFavorites} from '../../Store/notes'
 
 const Note = ({note}) => {
-  const history = useHistory()
   const [modalActive, setModalActive] = useState(false)
+  const [addToFavorites, setAddToFavorites] = useState(true)
+  const history = useHistory()
   const dispatch = useDispatch()
 
   const removeNote = () => {
     setModalActive(false)
-    dispatch(noteDelete({id: note.id}))
+    dispatch(noteDelete(note))
+    dispatch((removeFavorites(note.id)))
   }
 
   const favoritesToggle = () => {
-    dispatch(toggleFavorites({id: note.id}))
-    dispatch(addFavorites({id: note.id}))
+    dispatch(addFavorites({note, status: addToFavorites}))
+    setAddToFavorites(!addToFavorites)
+    localStorage.setItem(`${note.id}_favoritesStatus`, `${!addToFavorites}`)
   }
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem(`${note.id}_favoritesStatus`)
+
+    if (storedValue !== null) {
+      setAddToFavorites(JSON.parse(storedValue))
+    }
+  }, [note.id, note.favoritesStatus])
 
   return (
     <>

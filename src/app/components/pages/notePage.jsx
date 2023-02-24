@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {change, getNotes} from '../../Store/notes'
+import {change, changeFavorites, getFavoritesNotes, getNotes} from '../../Store/notes'
 import {useHistory, useParams} from 'react-router-dom'
 import EditNoteModal from '../modal/editNoteModal'
 
 const NotePage = () => {
   const notes = useSelector(getNotes())
+  const notesFavorites = useSelector(getFavoritesNotes())
   const [modalActive, setModalActive] = useState(false)
   const history = useHistory()
   const {noteId} = useParams()
@@ -14,11 +15,19 @@ const NotePage = () => {
   const getById = notes.find(note => note.id === noteId)
 
   const editNote = (userInput, userInputHeader) => {
-    dispatch(change({
-      id: noteId,
-      newNote: userInput,
-      header: userInputHeader
-    }))
+    if (notesFavorites.includes(getById)) {
+      dispatch(changeFavorites({
+        id: noteId,
+        newNote: userInput,
+        header: userInputHeader
+      }))
+    } else {
+      dispatch(change({
+        id: noteId,
+        newNote: userInput,
+        header: userInputHeader
+      }))
+    }
   }
 
   return (

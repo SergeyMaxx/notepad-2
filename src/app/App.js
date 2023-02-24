@@ -7,7 +7,6 @@ import Notes from './layouts/notes'
 import DeletedNotes from './layouts/deletedNotes'
 import './SCSS/note.scss'
 import FavoritesNotes from './layouts/favoritesNotes'
-import {ToastContainer} from 'react-toastify'
 import Main from './layouts/main'
 import ProtectedRoute from './components/protectedRoute'
 import LogOut from './layouts/logOut'
@@ -29,7 +28,6 @@ function App() {
           <Redirect to="/"/>
         </Switch>
       </AuthProvider>
-      <ToastContainer/>
     </>
   )
 }

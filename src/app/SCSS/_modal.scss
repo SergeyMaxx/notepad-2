@@ -10,7 +10,7 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: 0.5s;
+  transition: 0.2s;
   z-index: 1;
 }
 
@@ -29,7 +29,7 @@
   border-radius: 10px;
   background: #9AA489;
   transform: scale(0.3);
-  transition: all 0.4s;
+  transition: all 0.2s;
 }
 
 .content-active {

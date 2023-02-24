@@ -5,6 +5,7 @@ import ModalConfirmation from './modal/modalConfirmation'
 import Search from './search'
 import NoteTrash from './notes/noteTrash'
 import SideBar from './sideBar'
+import {getUserId} from '../services/localStorage.service'
 
 const TrashList = () => {
   const [searchText, setSearchText] = useState('')
@@ -40,7 +41,9 @@ const TrashList = () => {
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
-          {basketSearch.map(note => <NoteTrash key={note.id} note={note}/>)}
+          {basketSearch.filter(none => none.userId === getUserId()).map(note => (
+            <NoteTrash key={note.id} note={note}/>
+          ))}
         </div>
       </div>
     </div>

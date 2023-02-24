@@ -11,7 +11,7 @@ const NoteTrash = ({note}) => {
 
   const restoreNote = () => {
     setModalActive(false)
-    dispatch(noteReturn({id: note.id}))
+    dispatch(noteReturn(note))
   }
 
   return (

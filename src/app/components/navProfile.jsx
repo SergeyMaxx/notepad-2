@@ -1,11 +1,8 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
-import {useSelector} from 'react-redux'
-import {getCurrentUserData} from '../Store/auth'
 import {useAuth} from '../hooks/useAuth'
 
 const NavProfile = () => {
-  // const currentUser = useSelector(getCurrentUserData())
   const {currentUser} = useAuth()
   const history = useHistory()
 

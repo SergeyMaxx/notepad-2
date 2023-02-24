@@ -1,14 +1,14 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import reducer from './notes'
-// import authReducer from './auth'
+import {thunk} from './middleware/thunk'
 
 const rootReducer = combineReducers({
-  notesReducer: reducer,
-  // authReducer
+  notesReducer: reducer
 })
 
 export function createStore() {
   return configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: defaultMiddleware => defaultMiddleware().concat(thunk)
   })
 }

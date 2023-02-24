@@ -9,23 +9,28 @@ const noteService = {
     return data
   },
   create: async payload => {
-    const {data} = await httpService.post(noteEndpoint, payload)
+    const {data} = await httpService.put(noteEndpoint + payload.id, payload)
     return data
   },
   getCurrentUser: async () => {
     const {data} = await httpService.get(noteEndpoint + localStorageService.getUserId())
     return data
   },
-  update: async payload => {
+  update: async ({id, newNote, header}) => {
+    await httpService.patch(noteEndpoint + id, {newNote, header})
+    return {id, newNote, header}
+  },
+  updateStatus: async payload => {
     const {data} = await httpService.patch(
-      noteEndpoint + localStorageService.getUserId(), payload
+      noteEndpoint + payload.note.id,
+      {'favoritesStatus': payload.status}
     )
     return data
   },
   remove: async noteId => {
     const {data} = await httpService.delete(noteEndpoint + noteId)
     return data
-  },
+  }
 }
 
 export default noteService

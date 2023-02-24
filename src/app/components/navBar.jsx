@@ -2,13 +2,10 @@ import React from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import Settings from './settings'
 import NavProfile from './navProfile'
-import {useSelector} from 'react-redux'
-import {getIsLoggedIn} from '../Store/auth'
 import {useAuth} from '../hooks/useAuth'
 
 const NavBar = () => {
   const history = useHistory()
-  // const isLoggedIn = useSelector(getIsLoggedIn())
   const {currentUser} = useAuth()
 
   return (

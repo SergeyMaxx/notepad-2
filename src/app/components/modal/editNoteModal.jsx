@@ -15,6 +15,7 @@ const EditNoteModal = ({active, setActive, editNote, valueHeader, valueNote}) =>
       setUserInput(target.value)
     }
   }
+
   const handleChangeHeader = ({target}) => {
     if (headerCharacterLimit - target.value.length >= 0) {
       setUserInputHeader(target.value)

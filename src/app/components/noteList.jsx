@@ -7,6 +7,7 @@ import _ from 'lodash'
 import {useSelector} from 'react-redux'
 import {getNotes} from '../Store/notes'
 import SideBar from './sideBar'
+import {getUserId} from '../services/localStorage.service'
 
 const NoteList = () => {
   const notes = useSelector(getNotes())
@@ -39,7 +40,9 @@ const NoteList = () => {
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
-          {sortedNotes.map(note => <Note key={note.id} note={note}/>)}
+          {sortedNotes.filter(none => none.userId === getUserId()).map(note => (
+            <Note key={note.id} note={note}/>
+          ))}
         </div>
       </div>
     </div>
