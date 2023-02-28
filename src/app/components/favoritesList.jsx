@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
-import {getFavoritesNotes} from '../Store/notes'
+import {useDispatch, useSelector} from 'react-redux'
+import {getFavoritesNotes, openSettings} from '../Store/notes'
 import _ from 'lodash'
 import Sort from './sort'
 import Search from './search'
@@ -12,6 +12,7 @@ const FavoritesList = () => {
   const notesFavorites = useSelector(getFavoritesNotes())
   const [searchText, setSearchText] = useState('')
   const [sortBy, setSortBy] = useState({iter: 'date', order: 'asc'})
+  const dispatch = useDispatch()
 
   const favoritesSearch = notesFavorites.filter(note => note.header.toLowerCase().includes(searchText))
   const sortedNotes = _.orderBy(favoritesSearch, [sortBy.iter], [sortBy.order])
@@ -30,8 +31,15 @@ const FavoritesList = () => {
     }
   }
 
+  const handelCancel = e => {
+    if (e.target.classList.contains('note-list__wrapper') ||
+      e.target.classList.contains('note-list__grid')) {
+      dispatch(openSettings({status: false}))
+    }
+  }
+
   return (
-    <div className="note-list">
+    <div className="note-list" onClick={handelCancel}>
       <SideBar/>
       <div className="note-list__wrapper">
         <div className="note-list__container">

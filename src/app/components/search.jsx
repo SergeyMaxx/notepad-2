@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import glass from '../../icons/Glass.svg'
 
 const Search = ({setSearchText}) => {
   return (
@@ -10,7 +11,7 @@ const Search = ({setSearchText}) => {
         onChange={e => setSearchText(e.target.value)}
         placeholder="Search"
       />
-      <i className="note-list__container_search-icon"/>
+      <img className="note-list__container_search-icon" src={glass} alt="glass logo"/>
     </div>
   )
 }

@@ -58,6 +58,7 @@
   border-bottom: 2px solid #000;
   &.nav-dark {
     background: #353a35;
+    border-bottom: 2px solid #ccc;
   }
   &-row {
     display: flex;
@@ -73,6 +74,9 @@
     font-weight: 700;
     font-size: 30px;
     cursor: pointer;
+  }
+  &-profile-name-dark {
+    color: #dcd4af;
   }
   &-profile-avatar {
     width: 60px;
@@ -126,10 +130,13 @@
     height: 42px;
     border: none;
     cursor: pointer;
-    background: transparent url("../../icons/Settings.png") no-repeat;
+    background: transparent;
     transition: all 0.3s;
     &:hover {
       transform: translateX(-10px) rotate(-30deg);
+    }
+    &-logo {
+      max-width: 42px;
     }
   }
   &-settings-body {
@@ -177,7 +184,6 @@
     background: #272727;
     border-radius: 25px;
     cursor: pointer;
-    //order: 1;
     &::before {
       content: '';
       position: absolute;
@@ -219,6 +225,8 @@
     border-right: 2px solid #000;
     &.side-bar-dark {
       background: #424037;
+      border-right: 2px solid #ccc;
+      color: #dcd4af;
     }
     &__list {
       margin-top: 140px;
@@ -226,11 +234,6 @@
       min-height: 194px;
       &_all {
         @extend %side-bar-row;
-        &-folder {
-          width: 44px;
-          height: 34px;
-          background: url("../../icons/Folder.svg") no-repeat;
-        }
         &-text {
           width: 94px;
           height: 21px;
@@ -252,11 +255,6 @@
       }
       &_favorites {
         @extend %side-bar-row;
-        &-folder {
-          width: 44px;
-          height: 34px;
-          background: url("../../icons/Folder.svg") no-repeat;
-        }
         &-text {
           width: 98px;
           height: 21px;
@@ -278,11 +276,9 @@
       }
       &_trash {
         @extend %side-bar-row;
-        //margin-left: 8px;
         &-bin {
           width: 26px;
-          height: 34px;
-          background: url("../../icons/Trash.png") no-repeat;
+          height: 35px;
         }
         &-text {
           width: 63px;
@@ -353,7 +349,6 @@
       &-plus {
         width: 34px;
         height: 34px;
-        background: url("../../icons/Plus.svg") no-repeat 0 0;
       }
       &-new {
         font-family: 'DM Sans', serif;
@@ -366,7 +361,7 @@
       @extend %note-list-menu;
       min-width: 120px;
       min-height: 40px;
-      padding: 0 15px 0 25px;
+      padding: 0 25px;
       background: #D7D7D7;
       border: 1px solid #000;
       border-radius: 25px;
@@ -389,15 +384,6 @@
         line-height: 21px;
         color: #000;
         text-shadow: 1px 1px 0 #fff;
-      }
-      &-icon {
-        width: 22px;
-        height: 20px;
-        margin-top: 10px;
-        background: url("../../icons/Polygon down.svg") no-repeat 0 0;
-      }
-      &-icon-up {
-        background: url("../../icons/Polygon up.svg") no-repeat 0 0;
       }
     }
     &_search {
@@ -436,7 +422,6 @@
         height: 26px;
         margin-top: 2px;
         margin-right: 10px;
-        background-image: url("../../icons/Glass.svg");
         transition: all 0.2s;
       }
     }
@@ -542,18 +527,10 @@
         width: 26px;
         height: 26px;
         margin: 6px 0 0 15px;
-        background: url("../../icons/Star.svg") no-repeat;
         cursor: pointer;
         transition: all 0.2s;
         &:active {
           transform: scale(1.2);
-        }
-        &.favorite-on {
-          background: url("../../icons/Gold star.svg") no-repeat;
-          transition: all 0.2s;
-          &:active {
-            transform: scale(1.2);
-          }
         }
       }
       &-trash {
@@ -561,7 +538,6 @@
         margin: 6px 15px 0 0;
         width: 20px;
         height: 26px;
-        background-image: url("../../icons/Trash.svg");
         cursor: pointer;
         transition: all 0.2s;
         &:active {
@@ -574,8 +550,8 @@
 
 /*============< notePage >==============*/
 .note-page {
-  width: 860px;
-  height: 560px;
+  max-width: 860px;
+  max-height: 560px;
   margin: 150px auto;
   background: #A5A993;
   border: 1px solid #000;
@@ -584,7 +560,7 @@
   box-shadow: 0 0 0 1px #a99e75,
   inset 2px 2px 10px #22251a, inset -5px -5px 10px 2px #f6fdd6;
   &__header {
-    width: 800px;
+    max-width: 800px;
     height: 100px;
     margin: 30px auto;
     padding: 17px 18px;
@@ -603,7 +579,7 @@
     inset -2px -2px 5px #9a9ba2, inset 5px 5px 10px #f1f1f1;
   }
   &__body {
-    width: 800px;
+    max-width: 800px;
     height: 300px;
     margin: auto;
     padding: 25px;
@@ -627,7 +603,6 @@
       width: 60px;
       height: 40px;
       margin: 30px 0 30px 30px;
-      background: url("../../icons/Back arкow.svg") no-repeat;
       cursor: pointer;
       transition: all 0.2s;
       &:hover {
@@ -638,7 +613,6 @@
       width: 40px;
       height: 40px;
       margin: 30px 30px 30px 0;
-      background: url("../../icons/Edit.svg") no-repeat;
       cursor: pointer;
       transition: all 0.2s;
       &:hover {
@@ -658,9 +632,6 @@
   font-weight: 700;
   font-size: 18px;
 }
-.restore_item-trash {
-  background-image: url("../../icons/Restore.svg");
-}
 
 /*===========< login >=============*/
 .login {
@@ -671,7 +642,7 @@
     width: 60px;
     height: 40px;
     margin: 30px 0 0 30px;
-    background: url("../../icons/Back arкow.svg") no-repeat;
+    background: url("../../icons/Back arrow.svg") no-repeat;
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
@@ -787,7 +758,7 @@
   }
 }
 
-@media (max-width: 1278px) {
+@media (max-width: 1288px) {
   .note-list__container_search {
     width: 286px;
   }
@@ -796,9 +767,28 @@
   }
 }
 
+@media (max-width: 1276px) {
+  .note-list__grid {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 721px) {
   .nav-header {
     font-size: 35px;
+  }
+
+  .nav-settings-logo {
+    width: 25px;
+  }
+
+  .nav-profile-name {
+    font-size: 20px;
+  }
+
+  .nav-profile-avatar {
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -808,8 +798,14 @@
   }
 }
 
-@media (max-width: 574px) {
-  .nav-settings {
-    display: none;
+@media (max-width: 378px) {
+  .note-list__wrapper {
+    padding: 34px 20px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-row {
+    column-gap: 15px;
   }
 }

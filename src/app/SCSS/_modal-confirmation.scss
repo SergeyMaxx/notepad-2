@@ -67,6 +67,7 @@
 }
 
 .user-page {
+  position: relative;
   width: 860px;
   height: 560px;
   background: #5a6251;
@@ -85,14 +86,100 @@
 }
 
 .profile-name {
+  display: flex;
+  justify-content: center;
+  min-width: 150px;
   color: #000;
   text-shadow: 1px 1px 0 #82886c;
   font-family: 'DM Sans', serif;
   font-weight: 700;
   font-size: 30px;
+  align-items: center;
 }
+
+.avatar-edit {
+  position: absolute;
+  right: 375px;
+  top: 130px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.avatar-edit:hover {
+  transform: scale(1.2);
+}
+
+.name-edit {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.name-edit:hover {
+  transform: scale(1.2);
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-save {
+  padding: 5px 10px ;
+  cursor: pointer;
+  font-family: 'DM Sans', serif;
+  font-weight: 700;
+  font-size: 24px;
+  border: 2px solid #DCD4AF;
+  border-radius: 8px;
+  background: #076058;
+  color: #DCD4AF;
+  transition: all 0.3s;
+  line-height: 24px;
+}
+
+.profile-save:hover {
+  box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46);
+}
+
+.avatar-save {
+  position: absolute;
+  right: 375px;
+  top: 100px;
+}
+
+.profile-input {
+  width: 150px;
+  height: 39px;
+  font-size: 20px;
+  border: 1px solid #f6f6f5;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding-left: 10px;
+  font-family: 'DM Sans', serif;
+  background: #c4c4c4;
+  text-shadow: 1px 1px 0 #fff;
+  box-shadow: inset 3px 3px 5px #555659, inset -2px -2px 5px #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-input:focus {
+  box-shadow: inset 1px 1px 2px #9a9ba2, inset -1px -1px 2px #f1f1f1;
+  outline: none;
+}
+
 .user-page-avatar {
   width: 150px;
   height: 150px;
   margin-bottom: 20px;
+}
+
+
+
+.hide {
+  display: none;
 }

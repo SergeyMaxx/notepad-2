@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {change, changeFavorites, getFavoritesNotes, getNotes} from '../../Store/notes'
 import {useHistory, useParams} from 'react-router-dom'
 import EditNoteModal from '../modal/editNoteModal'
+import back from '../../../icons/Back arrow.svg'
+import edit from '../../../icons/Edit.svg'
 
 const NotePage = () => {
   const notes = useSelector(getNotes())
@@ -12,7 +14,15 @@ const NotePage = () => {
   const {noteId} = useParams()
   const dispatch = useDispatch()
 
-  const getById = notes.find(note => note.id === noteId)
+  let getById = null
+
+  useEffect(() => {
+    localStorage.setItem('current-notes', JSON.stringify(getById))
+  }, [notes])
+
+  notes.length
+    ? getById = notes.find(note => note.id === noteId)
+    : getById = JSON.parse(localStorage.getItem('current-notes'))
 
   const editNote = (userInput, userInputHeader) => {
     if (notesFavorites.includes(getById)) {
@@ -30,6 +40,11 @@ const NotePage = () => {
     }
   }
 
+  const handleBack = () => {
+    localStorage.removeItem('current-notes')
+    history.push('/notes')
+  }
+
   return (
     <div className="note-page">
       <h2 className="note-page__header">
@@ -39,8 +54,18 @@ const NotePage = () => {
         {getById.newNote}
       </p>
       <div className="note-page__container">
-        <i className="note-page__container_arrow" onClick={() => history.push('/notes')}/>
-        <i className="note-page__container_edit" onClick={() => setModalActive(true)}/>
+        <img
+          className="note-page__container_arrow"
+          onClick={handleBack}
+          src={back}
+          alt="back arrow logo"
+        />
+        <img
+          className="note-page__container_edit"
+          onClick={() => setModalActive(true)}
+          src={edit}
+          alt="edit logo"
+        />
       </div>
       <EditNoteModal
         active={modalActive}

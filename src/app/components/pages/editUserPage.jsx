@@ -1,12 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import {useSelector} from 'react-redux'
-import {getCurrentUserData} from '../../Store/auth'
 import {useAuth} from '../../hooks/useAuth'
+import pen from '../../../icons/pen.svg'
 
 const EditUserPage = ({active, setActive}) => {
-  // const currentUser = useSelector(getCurrentUserData())
+  const [editName, setEditName] = useState(false)
+  const [editAvatar, setEdiAvatar] = useState(false)
   const {currentUser} = useAuth()
+  const [edit, setEdit] = useState(currentUser.name)
+  const {editUser} = useAuth()
+  const {changeAvatar} = useAuth()
+
+  const handleChange = ({target}) => {
+    setEdit(target.value)
+  }
+
+  const handleSaveName = async () => {
+    try {
+      await editUser({name: edit})
+      setEditName(!editName)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSaveAvatar = async () => {
+    const image = `https://avatars.dicebear.com/api/avataaars/${(Math.random() + 1)
+      .toString(36).substring(7)}.svg`
+    try {
+      await changeAvatar({image})
+      setEdiAvatar(!editAvatar)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handelCancel = e => {
+    e.stopPropagation()
+    e.target.classList.contains('user-page') && setEditName(false)
+    e.target.classList.contains('user-page') && setEdiAvatar(false)
+  }
 
   return (
     <div
@@ -15,15 +50,45 @@ const EditUserPage = ({active, setActive}) => {
     >
       <div
         className={active ? 'user-page user-page-active' : 'user-page'}
-        onClick={e => e.stopPropagation()}
+        onClick={handelCancel}
       >
+        <img
+          className={'avatar-edit' + (editAvatar ? ' hide' : '')}
+          onClick={() => setEdiAvatar(!editAvatar)}
+          src={pen}
+          alt="pen logo"
+        />
+        {editAvatar &&
+          <button className="profile-save avatar-save" onClick={handleSaveAvatar}>
+            change
+          </button>
+        }
         <img
           className="user-page-avatar"
           src={currentUser.image}
           alt={`${currentUser.name}'s avatar`}
         />
         <div className="profile-name">
-          {currentUser.name}
+          {editName
+            ? (<div className="profile-container">
+              <input
+                className="profile-input"
+                type="text"
+                value={edit.toString()}
+                onChange={handleChange}
+              />
+              <button className="profile-save" onClick={handleSaveName}>
+                save
+              </button>
+            </div>)
+            : currentUser.name
+          }
+          <img
+            className={'name-edit' + (editName ? ' hide' : '')}
+            onClick={() => setEditName(true)}
+            src={pen}
+            alt="pen logo"
+          />
         </div>
         <div className="profile-name">
           {currentUser.email}

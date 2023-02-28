@@ -10,7 +10,8 @@ const noteSlice = createSlice({
     basketState: [],
     favoritesState: [],
     error: [],
-    loading: true
+    loading: true,
+    settingsOn: false
   },
   reducers: {
     getNotesSuccess(state, action) {
@@ -102,6 +103,9 @@ const noteSlice = createSlice({
     },
     deleteFavorites(state, action) {
       state.favoritesState = [...state.favoritesState.filter(el => el.id !== action.payload.id)]
+    },
+    settingsOpen(state, action) {
+      state.settingsOn = action.payload.status
     }
   }
 })
@@ -121,6 +125,7 @@ const {
   cancelFavorites,
   toggler,
   deleteFavorites,
+  settingsOpen
 } = noteSlice.actions
 
 export function loadNotes() {
@@ -162,8 +167,8 @@ export function loadNotesFavorites() {
 export function createNote(note) {
   return async dispatch => {
     try {
-      const {content} = await noteService.create(note)
-      dispatch(newNotes(content))
+      dispatch(newNotes(note))
+      await noteService.create(note)
 
     } catch (error) {
       dispatch(getNotesFail(error.message))
@@ -280,5 +285,7 @@ export const getBasketNotes = () => state => state.notesReducer.basketState
 export const getFavoritesNotes = () => state => state.notesReducer.favoritesState
 export const getLoading = () => state => state.notesReducer.loading
 export const getError = () => state => state.notesReducer.error
+export const getSettingsOpen = () => state => state.notesReducer.settingsOn
+export const openSettings = status => settingsOpen(status)
 
 export default reducer

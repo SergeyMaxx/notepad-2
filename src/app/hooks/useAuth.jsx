@@ -79,7 +79,7 @@ const AuthProvider = ({children}) => {
     } catch (error) {
       errorCatcher(error)
       const {code, message} = error.response.data.error
-      console.log(code, message)
+
       if (code === 400 && message === 'EMAIL_EXISTS') {
         const errorObject = {email: 'User with this Email already exists'}
         throw errorObject
@@ -91,6 +91,26 @@ const AuthProvider = ({children}) => {
     try {
       const {content} = await userService.create(data)
       setCurrentUser(content)
+
+    } catch (error) {
+      errorCatcher(error)
+    }
+  }
+
+  const editUser = async ({name}) => {
+    try {
+      setCurrentUser({...currentUser, name})
+      await userService.updateName(name)
+
+    } catch (error) {
+      errorCatcher(error)
+    }
+  }
+
+  const changeAvatar = async ({image}) => {
+    try {
+      setCurrentUser({...currentUser, image})
+      await userService.updateAvatar(image)
 
     } catch (error) {
       errorCatcher(error)
@@ -130,7 +150,14 @@ const AuthProvider = ({children}) => {
   }, [error])
 
   return (
-    <AuthContext.Provider value={{signUp, logIn, currentUser, logOut}}>
+    <AuthContext.Provider value={{
+      signUp,
+      logIn,
+      currentUser,
+      logOut,
+      editUser,
+      changeAvatar
+    }}>
       {isLoading ? 'Loading...' : children}
     </AuthContext.Provider>
   )

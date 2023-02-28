@@ -3,6 +3,10 @@ import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import ModalConfirmation from '../modal/modalConfirmation'
 import {noteReturn} from '../../Store/notes'
+import on from '../../../icons/Gold star.svg'
+import off from '../../../icons/Star.svg'
+import restore from '../../../icons/Restore.svg'
+import trash from '../../../icons/Trash.svg'
 
 const NoteTrash = ({note}) => {
   const history = useHistory()
@@ -33,11 +37,15 @@ const NoteTrash = ({note}) => {
           </div>
         </div>
         <div className="box">
-          <i className={note.favoritesStatus ? 'favorite-off favorite-on' : 'favorite-off'}
-          />
-          <i
-            className="note-list__grid_item-trash restore_item-trash"
+          {note.favoritesStatus
+            ? <img className="favorite-off" src={on} alt="off logo"/>
+            : <img className="favorite-off" src={off} alt="on logo"/>
+          }
+          <img
+            className="note-list__grid_item-trash "
             onClick={() => setModalActive(true)}
+            src={restore}
+            alt="trash logo"
           />
         </div>
       </div>

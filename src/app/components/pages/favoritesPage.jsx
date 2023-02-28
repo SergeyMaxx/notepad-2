@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {changeFavorites, getFavoritesNotes} from '../../Store/notes'
 import {useHistory, useParams} from 'react-router-dom'
 import EditNoteModal from '../modal/editNoteModal'
+import back from '../../../icons/Back arrow.svg'
+import edit from '../../../icons/Edit.svg'
 
 const FavoritesPage = () => {
   const notesFavorites = useSelector(getFavoritesNotes())
@@ -11,7 +13,15 @@ const FavoritesPage = () => {
   const {favoritesNoteId} = useParams()
   const dispatch = useDispatch()
 
-  const getById = notesFavorites.find(note => note.id === favoritesNoteId)
+  let getById = null
+
+  useEffect(() => {
+    localStorage.setItem('current-notes', JSON.stringify(getById))
+  }, [notesFavorites])
+
+  notesFavorites.length
+    ? getById = notesFavorites.find(note => note.id === favoritesNoteId)
+    : getById = JSON.parse(localStorage.getItem('current-notes'))
 
   const editNote = (userInput, userInputHeader) => {
     dispatch(changeFavorites({
@@ -19,6 +29,11 @@ const FavoritesPage = () => {
       newNote: userInput,
       header: userInputHeader
     }))
+  }
+
+  const handleBack = () => {
+    localStorage.removeItem('current-notes')
+    history.push('/favorites')
   }
 
   return (
@@ -30,8 +45,18 @@ const FavoritesPage = () => {
         {getById.newNote}
       </p>
       <div className="note-page__container">
-        <i className="note-page__container_arrow" onClick={() => history.push('/favorites/')}/>
-        <i className="note-page__container_edit" onClick={() => setModalActive(true)}/>
+        <img
+          className="note-page__container_arrow"
+          onClick={handleBack}
+          src={back}
+          alt="back arrow logo"
+        />
+        <img
+          className="note-page__container_edit"
+          onClick={() => setModalActive(true)}
+          src={edit}
+          alt="edit logo"
+        />
       </div>
       <EditNoteModal
         active={modalActive}

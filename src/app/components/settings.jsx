@@ -4,20 +4,26 @@ import moon from '../../icons/moon.svg'
 import {useHistory} from 'react-router-dom'
 import EditUserPage from './pages/editUserPage'
 import ModalConfirmation from './modal/modalConfirmation'
+import settingsIcon from '../../icons/Settings.svg'
+import {useDispatch, useSelector} from 'react-redux'
+import {getSettingsOpen, openSettings} from '../Store/notes'
 
 const Settings = () => {
   const [modalActive, setModalActive] = useState(false)
   const [modalLogout, setModalLogout] = useState(false)
   const [state, setState] = useState(false)
-  const [settings, setSettings] = useState(false)
+  const settingsStatus = useSelector(getSettingsOpen())
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const darkModeToggler = () => {
     const nav = document.querySelector('.nav')
+    const navProfile = document.querySelector('.nav-profile-name')
     const sideBar = document.querySelector('.side-bar')
 
     setState(prevState => !prevState)
     nav.classList.toggle('nav-dark')
+    navProfile.classList.toggle('nav-profile-name-dark')
     sideBar.classList.toggle('side-bar-dark')
     const isDark = document.body.classList.toggle('dark')
     isDark ? localStorage.setItem('darkMode', 'dark') : localStorage.setItem('darkMode', 'light')
@@ -31,8 +37,12 @@ const Settings = () => {
 
   return (
     <>
-      <button className="nav-settings" onClick={() => setSettings(p => !p)}/>
-      <div className={'nav-settings-body' + (settings ? ' op' : '')}>
+      <button
+        className="nav-settings"
+        onClick={() => dispatch(openSettings({status: !settingsStatus}))}>
+        <img className="nav-settings-logo" src={settingsIcon} alt="settings logo"/>
+      </button>
+      <div className={'nav-settings-body' + (settingsStatus ? ' op' : '')}>
         <div className="nav-settings-body__item" onClick={() => setModalActive(true)}>
           Settings
         </div>
@@ -47,8 +57,8 @@ const Settings = () => {
           className={'dark-mode-btn' + (state ? ' dark-mode-btn__active' : '')}
           onClick={darkModeToggler}
         >
-          <img src={sun} alt="sun" className="dark-mode-btn__sun"/>
-          <img src={moon} alt="moon" className="dark-mode-btn__moon"/>
+          <img className="dark-mode-btn__sun" src={sun} alt="sun"/>
+          <img className="dark-mode-btn__moon" src={moon} alt="moon"/>
         </button>
       </div>
       <ModalConfirmation

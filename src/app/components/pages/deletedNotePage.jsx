@@ -1,13 +1,28 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import {getBasketNotes} from '../../Store/notes'
 import {useHistory, useParams} from 'react-router-dom'
+import back from '../../../icons/Back arrow.svg'
 
 const DeletedNotePage = () => {
   const notesBasket = useSelector(getBasketNotes())
   const history = useHistory()
   const {deletedNoteId} = useParams()
-  const getById = notesBasket.find(note => note.id === deletedNoteId)
+
+  let getById = null
+
+  useEffect(() => {
+    localStorage.setItem('current-notes', JSON.stringify(getById))
+  }, [notesBasket])
+
+  notesBasket.length
+    ? getById = notesBasket.find(note => note.id === deletedNoteId)
+    : getById = JSON.parse(localStorage.getItem('current-notes'))
+
+  const handleBack = () => {
+    localStorage.removeItem('current-notes')
+    history.push('/trash')
+  }
 
   return (
     <div className="note-page">
@@ -18,7 +33,12 @@ const DeletedNotePage = () => {
         {getById.newNote}
       </p>
       <div className="note-page__container">
-        <i className="note-page__container_arrow" onClick={() => history.push('/trash')}/>
+        <img
+          className="note-page__container_arrow"
+          onClick={handleBack}
+          src={back}
+          alt="back arrow logo"
+        />
       </div>
     </div>
   )

@@ -4,8 +4,8 @@ import AddNote from './addNote'
 import Sort from './sort'
 import Note from './notes/note'
 import _ from 'lodash'
-import {useSelector} from 'react-redux'
-import {getNotes} from '../Store/notes'
+import {useDispatch, useSelector} from 'react-redux'
+import {getNotes, openSettings} from '../Store/notes'
 import SideBar from './sideBar'
 import {getUserId} from '../services/localStorage.service'
 
@@ -15,6 +15,7 @@ const NoteList = () => {
   const [sortBy, setSortBy] = useState({iter: 'date', order: 'asc'})
   const notesSearch = notes.filter(note => note.header.toLowerCase().includes(searchText))
   const sortedNotes = _.orderBy(notesSearch, [sortBy.iter], [sortBy.order])
+  const dispatch = useDispatch()
 
   const handleSort = item => {
     if (sortBy.iter === item) {
@@ -30,8 +31,15 @@ const NoteList = () => {
     }
   }
 
+  const handelCancel = e => {
+    if (e.target.classList.contains('note-list__wrapper') ||
+      e.target.classList.contains('note-list__grid')) {
+      dispatch(openSettings({status: false}))
+    }
+  }
+
   return (
-    <div className="note-list">
+    <div className="note-list" onClick={handelCancel}>
       <SideBar/>
       <div className="note-list__wrapper">
         <div className="note-list__container">

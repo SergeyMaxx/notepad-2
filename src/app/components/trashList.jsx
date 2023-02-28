@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {getBasketNotes, noteDeleteAll} from '../Store/notes'
+import {getBasketNotes, noteDeleteAll, openSettings} from '../Store/notes'
 import {useDispatch, useSelector} from 'react-redux'
 import ModalConfirmation from './modal/modalConfirmation'
 import Search from './search'
@@ -20,8 +20,15 @@ const TrashList = () => {
     dispatch(noteDeleteAll())
   }
 
+  const handelCancel = e => {
+    if (e.target.classList.contains('note-list__wrapper') ||
+      e.target.classList.contains('note-list__grid')) {
+      dispatch(openSettings({status: false}))
+    }
+  }
+
   return (
-    <div className="note-list basket-list">
+    <div className="note-list basket-list" onClick={handelCancel}>
       <SideBar/>
       <div className="note-list__wrapper">
         <div className="note-list__container">
