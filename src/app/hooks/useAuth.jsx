@@ -4,6 +4,7 @@ import axios from 'axios'
 import userService from '../services/user.service'
 import localStorageService, {setTokens} from '../services/localStorage.service'
 import {useHistory} from 'react-router-dom'
+import Loader from '../components/loader'
 
 export const httpAuth = axios.create({
   baseURL: 'https://identitytoolkit.googleapis.com/v1/',
@@ -158,7 +159,7 @@ const AuthProvider = ({children}) => {
       editUser,
       changeAvatar
     }}>
-      {isLoading ? 'Loading...' : children}
+      {isLoading ? <Loader/> : children}
     </AuthContext.Provider>
   )
 }

@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
-import sun from '../../icons/sun.svg'
-import moon from '../../icons/moon.svg'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import EditUserPage from './pages/editUserPage'
 import ModalConfirmation from './modal/modalConfirmation'
-import settingsIcon from '../../icons/Settings.svg'
 import {useDispatch, useSelector} from 'react-redux'
 import {getSettingsOpen, openSettings} from '../Store/notes'
+import settingsIcon from '../../icons/Settings.svg'
+import sun from '../../icons/sun.svg'
+import moon from '../../icons/moon.svg'
 
 const Settings = () => {
   const [modalActive, setModalActive] = useState(false)
@@ -34,6 +34,12 @@ const Settings = () => {
   //     document.body.classList.add('dark')
   //   }
   // }, [])
+
+  useEffect(() => {
+    if (!modalActive) {
+      dispatch(openSettings({status: false}))
+    }
+  }, [modalActive])
 
   return (
     <>

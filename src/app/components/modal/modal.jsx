@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 import {useDispatch} from 'react-redux'
 import {createNote} from '../../Store/notes'
 import {getUserId} from '../../services/localStorage.service'
+import ModalField from '../form/modalField'
 
 const Modal = ({active, setActive}) => {
   const [userInput, setUserInput] = useState('')
   const [userInputHeader, setUserInputHeader] = useState('')
   const dispatch = useDispatch()
-
-  const characterLimit = 800
-  const headerCharacterLimit = 60
 
   const addNote = (userInput, userInputHeader) => {
     if (userInput || userInputHeader) {
@@ -26,17 +24,6 @@ const Modal = ({active, setActive}) => {
     }
   }
 
-  const handleChange = ({target}) => {
-    if (characterLimit - target.value.length >= 0) {
-      setUserInput(target.value)
-    }
-  }
-  const handleChangeHeader = ({target}) => {
-    if (headerCharacterLimit - target.value.length >= 0) {
-      setUserInputHeader(target.value)
-    }
-  }
-
   const handleSubmit = e => {
     e.preventDefault()
     addNote(userInput, userInputHeader)
@@ -45,42 +32,16 @@ const Modal = ({active, setActive}) => {
   }
 
   return (
-    <div
-      className={active ? 'modal modal-active' : 'modal'}
-      onClick={() => setActive(false)}
-    >
-      <div
-        className={active ? 'content content-active' : 'content'}
-        onClick={e => e.stopPropagation()}
-      >
-        <form onSubmit={handleSubmit}>
-          <input
-            value={userInputHeader}
-            onChange={handleChangeHeader}
-            placeholder="Enter header..."
-            className="content-header"
-          />
-          <small className="remaining-header">
-            {headerCharacterLimit - userInputHeader.length} Remaining
-          </small>
-          <textarea
-            value={userInput}
-            onChange={handleChange}
-            placeholder="Enter new note..."
-            className="content-body"
-          />
-          <small className="remaining-body">
-            {characterLimit - userInput.length} Remaining
-          </small>
-          <button
-            className="modal-button"
-            onClick={() => setActive(false)}
-          >
-            Add
-          </button>
-        </form>
-      </div>
-    </div>
+    <ModalField
+      userInput={userInput}
+      setUserInput={setUserInput}
+      userInputHeader={userInputHeader}
+      setUserInputHeader={setUserInputHeader}
+      active={active}
+      setActive={setActive}
+      handleSubmit={handleSubmit}
+      buttonText="Add"
+    />
   )
 }
 

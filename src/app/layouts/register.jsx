@@ -71,7 +71,6 @@ const Register = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header register__header">Registration</h1>
-          <label>
             <input
               name="name"
               id="name"
@@ -82,33 +81,28 @@ const Register = () => {
               placeholder="Name"
               className="login-form__input name-register"
             />
-          </label>
           <p className="errors errors-email">{errors.email}</p>
-          <label>
             <input
               name="email"
               id="email"
-              type="text"
+              type="email"
               value={data.email}
-              required="required"
+              required
               onChange={handleChange}
               placeholder="Email Address"
               className="login-form__input email"
             />
-          </label>
           <p className="errors errors-password">{errors.password}</p>
-          <label>
             <input
               name="password"
               id="password"
               type="password"
               value={data.password}
-              required="required"
+              required
               onChange={handleChange}
               placeholder="Password"
               className="login-form__input password password-register"
             />
-          </label>
           <div className="login-form__block">
             <p className="login-form__block_account already">
               Already have account?

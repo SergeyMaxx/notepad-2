@@ -110,3 +110,20 @@
   bottom: 95px;
   font-family: 'DM Sans', serif;
 }
+
+@media (max-width: 900px) {
+  .content {
+    width: 664px;
+    height: 364px;
+  }
+
+  .content-header {
+    width: 600px;
+    height: 40px;
+  }
+
+  .content-body {
+    width: 600px;
+    height: 120px;
+  }
+}

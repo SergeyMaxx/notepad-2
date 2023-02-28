@@ -12,6 +12,7 @@ import {
   loadNotesFavorites,
   loadNotesTrash
 } from '../Store/notes'
+import Loader from '../components/loader'
 
 const DeletedNotes = () => {
   const notes = useSelector(getNotes())
@@ -39,9 +40,7 @@ const DeletedNotes = () => {
     }
   }, [notesFavorites])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  if (loading) return <Loader/>
 
   return deletedNoteId ? <DeletedNotePage/> : <TrashList/>
 }

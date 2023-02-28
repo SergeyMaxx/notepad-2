@@ -12,6 +12,7 @@ import {
   loadNotesFavorites,
   loadNotesTrash
 } from '../Store/notes'
+import Loader from '../components/loader'
 
 const Notes = () => {
   const notes = useSelector(getNotes())
@@ -39,9 +40,7 @@ const Notes = () => {
     }
   }, [notesFavorites])
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  if (loading) return <Loader/>
 
   return noteId ? <NotePage/> : <NoteList/>
 }

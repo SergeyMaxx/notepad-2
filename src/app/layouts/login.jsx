@@ -40,18 +40,15 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header">Login</h1>
           {enterError && <p className="errors errors-login">{enterError}</p>}
-          <label>
             <input
               name="email"
-              type="text"
+              type="email"
               value={data.email}
               required
               onChange={handleChange}
               placeholder="Email Address"
               className="login-form__input"
             />
-          </label>
-          <label>
             <input
               name="password"
               type="password"
@@ -61,7 +58,6 @@ const Login = () => {
               placeholder="Password"
               className="login-form__input password"
             />
-          </label>
           <div className="login-form__block">
             <p className="login-form__block_account">
               Don't have account?

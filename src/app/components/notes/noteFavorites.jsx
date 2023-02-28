@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {addFavorites, favoritesOff, noteDelete, removeFavorites} from '../../Store/notes'
-import ModalConfirmation from '../modal/modalConfirmation'
-import on from '../../../icons/Gold star.svg'
-import off from '../../../icons/Star.svg'
+import {favoritesOff, noteDelete, removeFavorites} from '../../Store/notes'
 import trash from '../../../icons/Trash.svg'
+import NoteField from '../form/noteField'
 
 const NoteFavorites = ({note}) => {
-  const history = useHistory()
   const [modalActive, setModalActive] = useState(false)
   const [addToFavorites, setAddToFavorites] = useState(true)
   const dispatch = useDispatch()
@@ -34,44 +30,17 @@ const NoteFavorites = ({note}) => {
   }, [note.id, note.favoritesStatus])
 
   return (
-    <>
-      <div className="note-list__grid_item">
-        <h2 className="note-list__grid_item-header">
-          {note.header}
-        </h2>
-        <div
-          className="note-list__grid_item-body"
-          onClick={() => history.push(`/favorites/${note.id}`)}
-        >
-          <p className="note-list__grid_item-body-hidden">
-            {note.newNote}
-          </p>
-          <div className="data-block">
-            <span className="note-list__grid_item-date">{note.date}</span>
-            <span className="note-list__grid_item-time">{note.time}</span>
-          </div>
-        </div>
-        <div className="box">
-          {note.favoritesStatus
-            ? <img className="favorite-off" src={on} alt="off logo" onClick={toggleFavorites}/>
-            : <img className="favorite-off" src={off} alt="on logo" onClick={toggleFavorites}/>
-          }
-          <img
-            className="note-list__grid_item-trash"
-            onClick={() => setModalActive(true)}
-            src={trash}
-            alt="trash logo"
-          />
-        </div>
-      </div>
-      <ModalConfirmation
-        active={modalActive}
-        setActive={setModalActive}
-        remove={removeNote}
-        confirmationText="Are you sure you want to delete this note?"
-        buttonText="Yes. Delete this note"
-      />
-    </>
+    <NoteField
+      note={note}
+      path={`/favorites/${note.id}`}
+      handleFavorites={toggleFavorites}
+      setModalActive={setModalActive}
+      modalActive={modalActive}
+      trashIcon={trash}
+      deleteNote={removeNote}
+      question='Are you sure you want to delete this note?'
+      textBtn='Yes. Delete this note'
+    />
   )
 }
 
