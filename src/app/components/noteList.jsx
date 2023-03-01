@@ -8,27 +8,28 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getNotes, openSettings} from '../Store/notes'
 import SideBar from './sideBar'
 import {getUserId} from '../services/localStorage.service'
+import Pagination from './pagination'
+import {paginate} from '../utils/paginate'
 
 const NoteList = () => {
   const notes = useSelector(getNotes())
   const [searchText, setSearchText] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState({iter: 'date', order: 'asc'})
-  const notesSearch = notes.filter(note => note.header.toLowerCase().includes(searchText))
-  const sortedNotes = _.orderBy(notesSearch, [sortBy.iter], [sortBy.order])
   const dispatch = useDispatch()
 
-  const handleSort = item => {
-    if (sortBy.iter === item) {
-      setSortBy(prevState => ({
-        ...prevState,
-        order: prevState.order === 'asc' ? 'desc' : 'asc'
-      }))
-    } else {
-      setSortBy(prevState => ({
-        ...prevState,
-        order: prevState.order === 'desc' ? 'asc' : 'desc'
-      }))
-    }
+  const userNotes = notes.filter(n => n.userId === getUserId())
+  const pageSize = 15
+
+  const notesSearch = userNotes.filter(note => note.header.toLowerCase().includes(searchText))
+  const sortedNotes = _.orderBy(notesSearch, [sortBy.iter], [sortBy.order])
+  const userCrop = paginate(sortedNotes, currentPage, pageSize)
+
+  const handleSort = () => {
+    setSortBy(prevState => ({
+      ...prevState,
+      order: prevState.order === 'asc' ? 'desc' : 'asc'
+    }))
   }
 
   const handelCancel = e => {
@@ -45,12 +46,16 @@ const NoteList = () => {
         <div className="note-list__container">
           <AddNote/>
           <Sort sort={handleSort}/>
+          <Pagination
+            userNotes={userNotes}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
-          {sortedNotes.filter(none => none.userId === getUserId()).map(note => (
-            <Note key={note.id} note={note}/>
-          ))}
+          {userCrop.map(note => <Note key={note.id} note={note}/>)}
         </div>
       </div>
     </div>

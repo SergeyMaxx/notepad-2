@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {change, changeFavorites, getFavoritesNotes, getNotes} from '../../Store/notes'
 import {useParams} from 'react-router-dom'
 import NotePageField from '../form/notePageField'
+import {getUserId} from '../../services/localStorage.service'
+import useNotePage from '../../hooks/useNotePage'
 
 const NotePage = () => {
   const notes = useSelector(getNotes())
@@ -11,15 +13,8 @@ const NotePage = () => {
   const {noteId} = useParams()
   const dispatch = useDispatch()
 
-  let note = null
-
-  useEffect(() => {
-    localStorage.setItem('current-notes', JSON.stringify(note))
-  }, [notes])
-
-  notes.length
-    ? note = notes.find(note => note.id === noteId)
-    : note = JSON.parse(localStorage.getItem('current-notes'))
+  const userNotes = notes.filter(n => n.userId === getUserId())
+  const note = useNotePage(userNotes, noteId)
 
   const editNote = (userInput, userInputHeader) => {
     if (notesFavorites.includes(note)) {

@@ -1,22 +1,17 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {useSelector} from 'react-redux'
 import {getBasketNotes} from '../../Store/notes'
 import {useParams} from 'react-router-dom'
 import NotePageField from '../form/notePageField'
+import {getUserId} from '../../services/localStorage.service'
+import useNotePage from '../../hooks/useNotePage'
 
 const DeletedNotePage = () => {
   const notesBasket = useSelector(getBasketNotes())
   const {deletedNoteId} = useParams()
 
-  let note = null
-
-  useEffect(() => {
-    localStorage.setItem('current-notes', JSON.stringify(note))
-  }, [notesBasket])
-
-  notesBasket.length
-    ? note = notesBasket.find(note => note.id === deletedNoteId)
-    : note = JSON.parse(localStorage.getItem('current-notes'))
+  const userNotes = notesBasket.filter(n => n.userId === getUserId())
+  const note = useNotePage(userNotes, deletedNoteId)
 
   return (
     <NotePageField

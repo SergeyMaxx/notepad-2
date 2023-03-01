@@ -7,28 +7,28 @@ import Search from './search'
 import NoteFavorites from './notes/noteFavorites'
 import SideBar from './sideBar'
 import {getUserId} from '../services/localStorage.service'
+import {paginate} from '../utils/paginate'
+import Pagination from './pagination'
 
 const FavoritesList = () => {
   const notesFavorites = useSelector(getFavoritesNotes())
   const [searchText, setSearchText] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState({iter: 'date', order: 'asc'})
   const dispatch = useDispatch()
 
-  const favoritesSearch = notesFavorites.filter(note => note.header.toLowerCase().includes(searchText))
-  const sortedNotes = _.orderBy(favoritesSearch, [sortBy.iter], [sortBy.order])
+  const userNotes = notesFavorites.filter(n => n.userId === getUserId())
+  const pageSize = 15
 
-  const handleSort = item => {
-    if (sortBy.iter === item) {
-      setSortBy(prevState => ({
-        ...prevState,
-        order: prevState.order === 'asc' ? 'desc' : 'asc'
-      }))
-    } else {
-      setSortBy(prevState => ({
-        ...prevState,
-        order: prevState.order === 'desc' ? 'asc' : 'desc'
-      }))
-    }
+  const favoritesSearch = userNotes.filter(note => note.header.toLowerCase().includes(searchText))
+  const sortedNotes = _.orderBy(favoritesSearch, [sortBy.iter], [sortBy.order])
+  const userCrop = paginate(sortedNotes, currentPage, pageSize)
+
+  const handleSort = () => {
+    setSortBy(prevState => ({
+      ...prevState,
+      order: prevState.order === 'asc' ? 'desc' : 'asc'
+    }))
   }
 
   const handelCancel = e => {
@@ -44,12 +44,16 @@ const FavoritesList = () => {
       <div className="note-list__wrapper">
         <div className="note-list__container">
           <Sort sort={handleSort}/>
+          <Pagination
+            userNotes={userNotes}
+            pageSize={pageSize}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
-          {sortedNotes.filter(none => none.userId === getUserId()).map(note => (
-            <NoteFavorites key={note.id} note={note}/>
-          ))}
+          {userCrop.map(note => <NoteFavorites key={note.id} note={note}/>)}
         </div>
       </div>
     </div>
