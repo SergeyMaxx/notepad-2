@@ -786,6 +786,7 @@ body {
 }
 .note-list__container .div-page {
   transition: all 0.2s;
+  cursor: pointer;
 }
 .note-list__container .div-page:hover {
   text-shadow: 0 0 5px #000;
@@ -815,8 +816,12 @@ body {
   font-size: 20px;
   list-style: none;
   background: #d5d5d6;
+  text-shadow: 1px 1px 1px #fff;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.note-list__container_page-list-item:not(:last-child) {
   border-right: 1px solid #838282;
-  transition: all 0.3s;
 }
 .note-list__container_page-list-item:hover {
   background: #b3b3b9;
@@ -824,6 +829,7 @@ body {
 .note-list__container_page-list-item.page-active {
   background: #525252;
   color: #dcd4af;
+  text-shadow: none;
 }
 .note-list__container_search {
   flex-direction: row-reverse;

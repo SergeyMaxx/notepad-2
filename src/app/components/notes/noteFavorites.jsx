@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {favoritesOff, noteDelete, removeFavorites} from '../../Store/notes'
 import trash from '../../../icons/Trash.svg'
@@ -6,7 +6,6 @@ import NoteField from '../form/noteField'
 
 const NoteFavorites = ({note}) => {
   const [modalActive, setModalActive] = useState(false)
-  const [addToFavorites, setAddToFavorites] = useState(true)
   const dispatch = useDispatch()
 
   const removeNote = () => {
@@ -15,25 +14,11 @@ const NoteFavorites = ({note}) => {
     dispatch((removeFavorites(note.id)))
   }
 
-  const toggleFavorites = () => {
-    dispatch(favoritesOff({note, status: addToFavorites}))
-    setAddToFavorites(!addToFavorites)
-    localStorage.setItem(`${note.id}_favoritesStatus`, `${!addToFavorites}`)
-  }
-
-  useEffect(() => {
-    const storedValue = localStorage.getItem(`${note.id}_favoritesStatus`)
-
-    if (storedValue !== null) {
-      setAddToFavorites(JSON.parse(storedValue))
-    }
-  }, [note.id, note.favoritesStatus])
-
   return (
     <NoteField
       note={note}
       path={`/favorites/${note.id}`}
-      handleFavorites={toggleFavorites}
+      handleFavorites={() => dispatch(favoritesOff({note, status: false}))}
       setModalActive={setModalActive}
       modalActive={modalActive}
       trashIcon={trash}
