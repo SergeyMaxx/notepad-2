@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useAuth} from '../hooks/useAuth'
+import EmailField from '../components/form/emailField'
+import PasswordField from '../components/form/passwordField'
 
 const Login = () => {
   const [enterError, setEnterError] = useState(null)
@@ -40,24 +42,8 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header">Login</h1>
           {enterError && <p className="errors errors-login">{enterError}</p>}
-            <input
-              name="email"
-              type="email"
-              value={data.email}
-              required
-              onChange={handleChange}
-              placeholder="Email Address"
-              className="login-form__input"
-            />
-            <input
-              name="password"
-              type="password"
-              value={data.password}
-              required
-              onChange={handleChange}
-              placeholder="Password"
-              className="login-form__input password"
-            />
+          <EmailField data={data} handleChange={handleChange}/>
+          <PasswordField data={data} handleChange={handleChange}/>
           <div className="login-form__block">
             <p className="login-form__block_account">
               Don't have account?

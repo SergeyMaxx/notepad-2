@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {validator} from '../utils/validator'
 import {useAuth} from '../hooks/useAuth'
+import EmailField from '../components/form/emailField'
+import PasswordField from '../components/form/passwordField'
 
 const Register = () => {
   const history = useHistory()
@@ -71,38 +73,23 @@ const Register = () => {
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header register__header">Registration</h1>
-            <input
-              name="name"
-              id="name"
-              type="text"
-              value={data.name}
-              required
-              onChange={handleChange}
-              placeholder="Name"
-              className="login-form__input name-register"
-            />
+          <input
+            name="name"
+            type="text"
+            value={data.name}
+            required
+            onChange={handleChange}
+            placeholder="Name"
+            className="login-form__input name-register"
+          />
           <p className="errors errors-email">{errors.email}</p>
-            <input
-              name="email"
-              id="email"
-              type="email"
-              value={data.email}
-              required
-              onChange={handleChange}
-              placeholder="Email Address"
-              className="login-form__input email"
-            />
+          <EmailField data={data} handleChange={handleChange} _class="email"/>
           <p className="errors errors-password">{errors.password}</p>
-            <input
-              name="password"
-              id="password"
-              type="password"
-              value={data.password}
-              required
-              onChange={handleChange}
-              placeholder="Password"
-              className="login-form__input password password-register"
-            />
+          <PasswordField
+            data={data}
+            handleChange={handleChange}
+            _class="password-register"
+          />
           <div className="login-form__block">
             <p className="login-form__block_account already">
               Already have account?
@@ -115,7 +102,7 @@ const Register = () => {
             </p>
           </div>
           <button
-            className={isValid ? 'login-form__button-disabled button-reg': 'login-form__button button-reg'}
+            className={isValid ? 'login-form__button-disabled button-reg' : 'login-form__button button-reg'}
             type="submit"
             disabled={isValid}
           >

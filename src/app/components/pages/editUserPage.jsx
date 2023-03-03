@@ -11,11 +11,8 @@ const EditUserPage = ({active, setActive}) => {
   const {editUser} = useAuth()
   const {changeAvatar} = useAuth()
 
-  const handleChange = ({target}) => {
-    setEdit(target.value)
-  }
-
-  const handleSaveName = async () => {
+  const handleSaveName = async e => {
+    e.preventDefault()
     try {
       await editUser({name: edit})
       setEditName(!editName)
@@ -70,17 +67,18 @@ const EditUserPage = ({active, setActive}) => {
         />
         <div className="profile-name">
           {editName
-            ? (<div className="profile-container">
+            ? (<form className="profile-container" onSubmit={handleSaveName}>
               <input
                 className="profile-input"
+                name="name"
                 type="text"
                 value={edit.toString()}
-                onChange={handleChange}
+                onChange={e => setEdit(e.target.value)}
               />
-              <button className="profile-save" onClick={handleSaveName}>
+              <button className="profile-save" type="submit">
                 save
               </button>
-            </div>)
+            </form>)
             : currentUser.name
           }
           <img

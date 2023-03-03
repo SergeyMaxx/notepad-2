@@ -493,7 +493,7 @@ body {
   color: #dcd4af;
 }
 .nav-profile-avatar {
-  width: 60px;
+  min-width: 60px;
   height: 60px;
   cursor: pointer;
 }
@@ -542,7 +542,7 @@ body {
   border: none;
   cursor: pointer;
   background: transparent;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .nav-settings:hover {
   transform: translateX(-10px) rotate(-30deg);
@@ -562,7 +562,7 @@ body {
   border-radius: 12px;
   text-shadow: 1px 1px 0 #fff;
   box-shadow: inset 2px 2px 5px #707073, inset -5px -5px 10px #fff;
-  transition: all 0.2s;
+  transition: all 0.1s;
   opacity: 0;
 }
 .nav-settings-body.op {

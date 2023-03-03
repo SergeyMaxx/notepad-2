@@ -34,7 +34,8 @@ const NoteList = () => {
 
   const handelCancel = e => {
     if (e.target.classList.contains('note-list__wrapper') ||
-      e.target.classList.contains('note-list__grid')) {
+      e.target.classList.contains('note-list__grid') ||
+      e.target.classList.contains('note-list__container')) {
       dispatch(openSettings({status: false}))
     }
   }
