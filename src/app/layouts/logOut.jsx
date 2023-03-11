@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import {useAuth} from '../hooks/useAuth'
+import Loader from '../components/loader'
 
 const LogOut = () => {
   const {logOut} = useAuth()
@@ -8,7 +9,7 @@ const LogOut = () => {
     logOut()
   }, [])
 
-  return <h1>Loading...</h1>
+  return <Loader/>
 }
 
 export default LogOut

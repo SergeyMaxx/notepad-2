@@ -3,13 +3,14 @@ import {Link, useHistory} from 'react-router-dom'
 import Settings from './settings'
 import NavProfile from './navProfile'
 import {useAuth} from '../hooks/useAuth'
-import {openSettings} from '../Store/notes'
-import {useDispatch} from 'react-redux'
+import {getDarkMode, openSettings} from '../Store/notes'
+import {useDispatch, useSelector} from 'react-redux'
 
 const NavBar = () => {
   const history = useHistory()
   const {currentUser} = useAuth()
   const dispatch = useDispatch()
+  const darkMode = useSelector(getDarkMode())
 
   const handelCancel = e => {
     if (e.target.classList.contains('nav') ||
@@ -19,19 +20,34 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="nav" onClick={handelCancel}>
+    <nav
+      className={'nav' + (darkMode === 'dark' ? ' nav-dark' : '')}
+      onClick={handelCancel}
+    >
       <div className="nav-row">
         <ul className="nav-list">
           {currentUser
             ? <NavProfile/>
             : <>
-              <li className="nav-list__item" onClick={() => history.push('/signIn')}>
-                <Link className="nav-list__link" to="/signIn">
+              <li
+                className={'nav-list__item' + (darkMode === 'dark' ? ' darkness-item' : '')}
+                onClick={() => history.push('/signIn')}
+              >
+                <Link
+                  className={'nav-list__link' + (darkMode === 'dark' ? ' darkness-link' : '')}
+                  to="/signIn"
+                >
                   Sign in
                 </Link>
               </li>
-              <li className="nav-list__item" onClick={() => history.push('/signUp')}>
-                <Link className="nav-list__link" to="/signUp">
+              <li
+                className={'nav-list__item' + (darkMode === 'dark' ? ' darkness-item' : '')}
+                onClick={() => history.push('/signUp')}
+              >
+                <Link
+                  className={'nav-list__link' + (darkMode === 'dark' ? ' darkness-link' : '')}
+                  to="/signUp"
+                >
                   Sign up
                 </Link>
               </li>

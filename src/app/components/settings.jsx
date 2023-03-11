@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import EditUserPage from './pages/editUserPage'
 import ModalConfirmation from './modal/modalConfirmation'
 import {useDispatch, useSelector} from 'react-redux'
-import {getSettingsOpen, openSettings} from '../Store/notes'
+import {darkModeToggle, getDarkMode, getSettingsOpen, openSettings} from '../Store/notes'
 import settingsIcon from '../../icons/Settings.svg'
 import sun from '../../icons/sun.svg'
 import moon from '../../icons/moon.svg'
@@ -11,29 +11,26 @@ import moon from '../../icons/moon.svg'
 const Settings = () => {
   const [modalActive, setModalActive] = useState(false)
   const [modalLogout, setModalLogout] = useState(false)
-  const [state, setState] = useState(false)
+  const [state, setState] = useState(localStorage.getItem('darkMode') === 'dark')
   const settingsStatus = useSelector(getSettingsOpen())
+  const darkMode = useSelector(getDarkMode())
   const history = useHistory()
   const dispatch = useDispatch()
 
   const darkModeToggler = () => {
-    const nav = document.querySelector('.nav')
-    const navProfile = document.querySelector('.nav-profile-name')
-    const sideBar = document.querySelector('.side-bar')
+    !state
+      ? localStorage.setItem('darkMode', 'dark')
+      : localStorage.setItem('darkMode', 'light')
 
+    dispatch(darkModeToggle({status: localStorage.getItem('darkMode')}))
     setState(prevState => !prevState)
-    nav.classList.toggle('nav-dark')
-    navProfile.classList.toggle('nav-profile-name-dark')
-    sideBar.classList.toggle('side-bar-dark')
-    const isDark = document.body.classList.toggle('dark')
-    isDark ? localStorage.setItem('darkMode', 'dark') : localStorage.setItem('darkMode', 'light')
   }
 
-  // useEffect(() => {
-  //   if (matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) {
-  //     document.body.classList.add('dark')
-  //   }
-  // }, [])
+  useEffect(() => {
+    darkMode === 'dark'
+      ? document.body.classList.add('dark')
+      : document.body.classList.remove('dark')
+  }, [darkMode])
 
   useEffect(() => {
     if (!modalActive) {

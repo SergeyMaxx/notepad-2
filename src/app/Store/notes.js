@@ -11,7 +11,8 @@ const noteSlice = createSlice({
     favoritesState: [],
     error: [],
     loading: true,
-    settingsOn: false
+    settingsOn: false,
+    isDarkMode: localStorage.getItem('darkMode') || 'light'
   },
   reducers: {
     getNotesSuccess(state, action) {
@@ -106,6 +107,9 @@ const noteSlice = createSlice({
     },
     settingsOpen(state, action) {
       state.settingsOn = action.payload.status
+    },
+    toggleDarkMode(state, action) {
+      state.isDarkMode = action.payload.status
     }
   }
 })
@@ -125,7 +129,8 @@ const {
   cancelFavorites,
   toggler,
   deleteFavorites,
-  settingsOpen
+  settingsOpen,
+  toggleDarkMode
 } = noteSlice.actions
 
 export function loadNotes() {
@@ -286,6 +291,8 @@ export const getFavoritesNotes = () => state => state.notesReducer.favoritesStat
 export const getLoading = () => state => state.notesReducer.loading
 export const getError = () => state => state.notesReducer.error
 export const getSettingsOpen = () => state => state.notesReducer.settingsOn
+export const getDarkMode = () => state => state.notesReducer.isDarkMode
 export const openSettings = status => settingsOpen(status)
+export const darkModeToggle = status => toggleDarkMode(status)
 
 export default reducer
