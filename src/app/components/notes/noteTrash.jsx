@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {noteReturn} from '../../Store/notes'
+import {noteReturn, noteReturnAll} from '../../Store/notes'
 import restore from '../../../icons/Restore.svg'
 import NoteField from '../form/noteField'
 
@@ -9,8 +9,10 @@ const NoteTrash = ({note}) => {
   const dispatch = useDispatch()
 
   const restoreNote = () => {
+    note.favoritesStatus
+      ? dispatch(noteReturnAll(note))
+      : dispatch(noteReturn(note))
     setModalActive(false)
-    dispatch(noteReturn(note))
   }
 
   return (

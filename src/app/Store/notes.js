@@ -199,6 +199,19 @@ export function noteReturn(note) {
     try {
       dispatch(restore({id: note.id}))
       await noteService.create(note)
+      await trashService.remove(note.id)
+
+    } catch (error) {
+      dispatch(getNotesFail(error.message))
+    }
+  }
+}
+
+export function noteReturnAll(note) {
+  return async dispatch => {
+    try {
+      dispatch(restore({id: note.id}))
+      await noteService.create(note)
       await favoriteService.create(note)
       await trashService.remove(note.id)
 

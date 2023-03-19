@@ -17,7 +17,7 @@ const NotePage = () => {
   const note = useNotePage(userNotes, noteId)
 
   const editNote = (userInput, userInputHeader) => {
-    if (notesFavorites.includes(note)) {
+    if (notesFavorites.some(n => n.id === note.id)) {
       dispatch(changeFavorites({
         id: noteId,
         newNote: userInput,

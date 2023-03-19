@@ -919,6 +919,7 @@ body {
 .note-list__grid_item-header {
   width: 264px;
   height: 40px;
+  word-wrap: break-word;
   padding: 0 10px;
   margin: 7px 9px 0;
   background: #d5d5d6;
@@ -1212,12 +1213,12 @@ body {
   margin: 20px auto 0;
 }
 .main {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .main-img {
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   border: 2px solid #000;
   border-radius: 50px;
   box-shadow: 15px 15px 20px 10px rgba(0, 0, 0, 0.78);
