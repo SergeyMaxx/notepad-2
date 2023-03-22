@@ -629,20 +629,24 @@
 }
 
 /*============< notePage >==============*/
+.page {
+  padding: 0 20px 20px;
+}
 .note-page {
   max-width: 860px;
   max-height: 560px;
   margin: 150px auto;
+  padding: 30px;
   background: #A5A993;
   border: 1px solid #000;
   border-radius: 20px;
-  box-sizing: content-box;
+  box-sizing: border-box;
   box-shadow: 0 0 0 1px #a99e75,
   inset 2px 2px 10px #22251a, inset -5px -5px 10px 2px #f6fdd6;
   &__header {
     max-width: 800px;
     height: 100px;
-    margin: 30px auto;
+    margin: 0 0 30px;
     padding: 17px 18px;
     background: #D9D9D9;
     border: 1px solid #757576;
@@ -661,7 +665,6 @@
   &__body {
     max-width: 800px;
     height: 300px;
-    margin: auto;
     padding: 25px;
     background: #D9D9D9;
     border: 1px solid #747476;

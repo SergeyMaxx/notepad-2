@@ -21,36 +21,38 @@ const NotePageField = ({
   }
 
   return (
-    <div className="note-page">
-      <h2 className="note-page__header">
-        {note.header}
-      </h2>
-      <p className="note-page__body">
-        {note.newNote}
-      </p>
-      <div className="note-page__container">
-        <img
-          className="note-page__container_arrow"
-          onClick={handleBack}
-          src={back}
-          alt="back arrow logo"
-        />
-        {isNotTrashPage &&
+    <div className="page">
+      <div className="note-page">
+        <h2 className="note-page__header">
+          {note.header}
+        </h2>
+        <p className="note-page__body">
+          {note.newNote}
+        </p>
+        <div className="note-page__container">
           <img
-            className="note-page__container_edit"
-            onClick={() => setModalActive(true)}
-            src={edit}
-            alt="edit logo"
+            className="note-page__container_arrow"
+            onClick={handleBack}
+            src={back}
+            alt="back arrow logo"
+          />
+          {isNotTrashPage &&
+            <img
+              className="note-page__container_edit"
+              onClick={() => setModalActive(true)}
+              src={edit}
+              alt="edit logo"
+            />}
+        </div>
+        {isNotTrashPage &&
+          <EditNoteModal
+            active={modalActive}
+            setActive={setModalActive}
+            valueHeader={note.header}
+            valueNote={note.newNote}
+            editNote={changeNote}
           />}
       </div>
-      {isNotTrashPage &&
-        <EditNoteModal
-          active={modalActive}
-          setActive={setModalActive}
-          valueHeader={note.header}
-          valueNote={note.newNote}
-          editNote={changeNote}
-        />}
     </div>
   )
 }
