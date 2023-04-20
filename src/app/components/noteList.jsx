@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Search from './search'
 import AddNote from './addNote'
 import Sort from './sort'
@@ -20,10 +20,17 @@ const NoteList = () => {
 
   const userNotes = notes.filter(n => n.userId === getUserId())
   const pageSize = 15
+  const pageCount = Math.ceil(userNotes.length / pageSize)
 
   const notesSearch = userNotes.filter(note => note.header.toLowerCase().includes(searchText))
   const sortedNotes = _.orderBy(notesSearch, [sortBy.iter], [sortBy.order])
   const userCrop = paginate(sortedNotes, currentPage, pageSize)
+
+  useEffect(() => {
+    if (currentPage > pageCount) {
+      setCurrentPage(pageCount)
+    }
+  }, [userNotes.length, currentPage, pageCount])
 
   const handleSort = () => {
     setSortBy(prevState => ({
@@ -47,12 +54,13 @@ const NoteList = () => {
         <div className="note-list__container">
           <AddNote/>
           <Sort sort={handleSort}/>
-          <Pagination
-            userNotes={userNotes}
-            pageSize={pageSize}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+          {userNotes.length > pageSize &&
+            <Pagination
+              pageCount={pageCount}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          }
           <Search setSearchText={setSearchText}/>
         </div>
         <div className="note-list__grid">
