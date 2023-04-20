@@ -5,11 +5,13 @@ import Sort from './sort'
 import Note from './notes/note'
 import _ from 'lodash'
 import {useDispatch, useSelector} from 'react-redux'
-import {getNotes, openSettings} from '../Store/notes'
+import {getNotes} from '../Store/notes'
 import SideBar from './sideBar'
 import {getUserId} from '../services/localStorage.service'
 import Pagination from './pagination'
 import {paginate} from '../utils/paginate'
+import {handelCancel} from '../utils/settingsOff'
+import {handleSort} from '../utils/sort'
 
 const NoteList = () => {
   const notes = useSelector(getNotes())
@@ -32,28 +34,13 @@ const NoteList = () => {
     }
   }, [userNotes.length, currentPage, pageCount])
 
-  const handleSort = () => {
-    setSortBy(prevState => ({
-      ...prevState,
-      order: prevState.order === 'asc' ? 'desc' : 'asc'
-    }))
-  }
-
-  const handelCancel = e => {
-    if (e.target.classList.contains('note-list__wrapper') ||
-      e.target.classList.contains('note-list__grid') ||
-      e.target.classList.contains('note-list__container')) {
-      dispatch(openSettings({status: false}))
-    }
-  }
-
   return (
-    <div className="note-list" onClick={handelCancel}>
+    <div className="note-list" onClick={e => handelCancel(e, dispatch)}>
       <SideBar/>
       <div className="note-list__wrapper">
         <div className="note-list__container">
           <AddNote/>
-          <Sort sort={handleSort}/>
+          <Sort sort={() => handleSort(setSortBy)}/>
           {userNotes.length > pageSize &&
             <Pagination
               pageCount={pageCount}

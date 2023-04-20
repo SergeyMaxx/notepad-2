@@ -223,10 +223,10 @@
 /*=========< note-list >===============*/
 .note-list {
   display: flex;
-  min-height: 975px;
+  height: 852px;
   .side-bar {
     max-width: 280px;
-    min-height: 975px;
+    height: 852px;
     padding: 20px;
     background: #DCD4AF;
     border-right: 2px solid #000;
@@ -342,8 +342,8 @@
   }
   &__wrapper {
     flex-grow: 1;
-    min-height: 714px;
-    padding: 34px 46px 0;
+    height: 852px;
+    padding: 34px 46px 24px;
   }
   &__container {
     display: flex;
@@ -392,6 +392,7 @@
       border: 1px solid #000;
       border-radius: 25px;
       box-sizing: content-box;
+      cursor: pointer;
       transition: all 0.3s;
       &:hover {
         box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.46),
@@ -630,6 +631,7 @@
 
 /*============< notePage >==============*/
 .page {
+  height: 700px;
   padding: 0 20px 20px;
 }
 .note-page {
@@ -718,13 +720,16 @@
 
 /*===========< login >=============*/
 .login {
-  max-width: 1903px;
-  height: 975px;
   display: flex;
+  position: relative;
+  max-width: 1903px;
+  max-height: 975px;
   &__back-arrow {
+    position: absolute;
+    left: 30px;
+    top: 30px;
     width: 60px;
     height: 40px;
-    margin: 30px 0 0 30px;
     background: url("../../icons/Back arrow.svg") no-repeat;
     cursor: pointer;
     transition: all 0.2s;
@@ -735,7 +740,7 @@
   &-form {
     position: relative;
     width: 400px;
-    height: 510px;
+    min-height: 510px;
     margin: 160px auto;
     background: #beb9a3;
     border-radius: 16px;
@@ -843,7 +848,7 @@
 
 .main {
   @extend %center;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .main-img {

@@ -633,11 +633,11 @@ body {
 /*=========< note-list >===============*/
 .note-list {
   display: flex;
-  min-height: 975px;
+  height: 852px;
 }
 .note-list .side-bar {
   max-width: 280px;
-  min-height: 975px;
+  height: 852px;
   padding: 20px;
   background: #DCD4AF;
   border-right: 2px solid #000;
@@ -738,8 +738,8 @@ body {
 }
 .note-list__wrapper {
   flex-grow: 1;
-  min-height: 714px;
-  padding: 34px 46px 0;
+  height: 852px;
+  padding: 34px 46px 24px;
 }
 .note-list__container {
   display: flex;
@@ -785,6 +785,7 @@ body {
   border: 1px solid #000;
   border-radius: 25px;
   box-sizing: content-box;
+  cursor: pointer;
   transition: all 0.3s;
 }
 .note-list__container_sort:hover {
@@ -1017,6 +1018,7 @@ body {
 
 /*============< notePage >==============*/
 .page {
+  height: 700px;
   padding: 0 20px 20px;
 }
 
@@ -1103,14 +1105,17 @@ body {
 
 /*===========< login >=============*/
 .login {
-  max-width: 1903px;
-  height: 975px;
   display: flex;
+  position: relative;
+  max-width: 1903px;
+  max-height: 975px;
 }
 .login__back-arrow {
+  position: absolute;
+  left: 30px;
+  top: 30px;
   width: 60px;
   height: 40px;
-  margin: 30px 0 0 30px;
   background: url("../../icons/Back arrow.svg") no-repeat;
   cursor: pointer;
   transition: all 0.2s;
@@ -1121,7 +1126,7 @@ body {
 .login-form {
   position: relative;
   width: 400px;
-  height: 510px;
+  min-height: 510px;
   margin: 160px auto;
   background: #beb9a3;
   border-radius: 16px;
@@ -1217,7 +1222,7 @@ body {
   margin: 20px auto 0;
 }
 .main {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .main-img {
