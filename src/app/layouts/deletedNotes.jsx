@@ -1,8 +1,8 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
-import TrashList from '../components/trashList'
 import DeletedNotePage from '../components/pages/deletedNotePage'
 import NoteLayoutsField from '../components/form/noteLayoutsField'
+import TrashList from '../components/lists/trashList'
 
 const DeletedNotes = () => {
   const {deletedNoteId} = useParams()

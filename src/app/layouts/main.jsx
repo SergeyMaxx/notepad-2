@@ -1,19 +1,14 @@
 import React, {useEffect} from 'react'
-import notepad from '../../icons/notepad.png'
+import notepad from '../../assets/notepad.png'
 import {useHistory} from 'react-router-dom'
-import {getDarkMode, openSettings} from '../Store/notes'
+import {getDarkMode} from '../Store/notes'
 import {useDispatch, useSelector} from 'react-redux'
+import {handelCancel} from '../utils/settingsOff'
 
 const Main = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const darkMode = useSelector(getDarkMode())
-
-  const handelCancel = e => {
-    if (e.target.classList.contains('main')) {
-      dispatch(openSettings({status: false}))
-    }
-  }
 
   useEffect(() => {
     darkMode === 'dark'
@@ -22,9 +17,12 @@ const Main = () => {
   }, [darkMode])
 
   return (
-    <div className="main" onClick={handelCancel}>
+    <div
+      className={'main ' + (darkMode === 'dark' ? 'main-dark' : '')}
+      onClick={e => handelCancel(e, dispatch)}
+    >
       <img
-        className="main-img"
+        className={'main-img ' + (darkMode === 'dark' ? 'main-img-dark' : '')}
         onClick={() => history.push('/notes')}
         src={notepad}
         alt="notepad-logo"

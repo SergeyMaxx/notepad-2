@@ -1,14 +1,13 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
-import {useAuth} from '../hooks/useAuth'
 import {useSelector} from 'react-redux'
 import {getDarkMode} from '../Store/notes'
-
+import {useAuth} from '../hooks/useAuth'
 
 const NavProfile = () => {
-  const {currentUser} = useAuth()
   const history = useHistory()
   const darkMode = useSelector(getDarkMode())
+  const {currentUser} = useAuth()
 
   const handleClick = () => history.push('/notes')
 
@@ -16,7 +15,8 @@ const NavProfile = () => {
     <>
       <div
         className={'nav-profile-name' + (darkMode === 'dark' ? ' nav-profile-name-dark' : '')}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         {currentUser.name}
       </div>
       <img

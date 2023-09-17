@@ -3,10 +3,15 @@ import {useHistory} from 'react-router-dom'
 import {useAuth} from '../hooks/useAuth'
 import EmailField from '../components/form/emailField'
 import PasswordField from '../components/form/passwordField'
+import {useSelector} from 'react-redux'
+import {getDarkMode} from '../Store/notes'
+import arrow from '../../assets/Back-arrow.svg'
+import whiteArrow from '../../assets/white-arrow.svg'
 
 const Login = () => {
   const [enterError, setEnterError] = useState(null)
   const [errors, setErrors] = useState(false)
+  const darkMode = useSelector(getDarkMode())
   const history = useHistory()
   const {logIn} = useAuth()
   const [data, setData] = useState({
@@ -37,7 +42,12 @@ const Login = () => {
 
   return (
     <div className="login">
-      <i className="login__back-arrow" onClick={() => history.push('/')}/>
+      <img
+        className="login__back-arrow"
+        src={darkMode === 'dark' ? whiteArrow : arrow}
+        onClick={() => history.push('/')}
+        alt="arrow"
+      />
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <h1 className="login-form__header">Login</h1>
