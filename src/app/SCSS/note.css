@@ -695,7 +695,7 @@ body {
   align-items: center;
   column-gap: 30px;
   flex-wrap: wrap;
-  border: 1px solid #8b937b;
+  border: 1px solid #858f7a;
   border-radius: 10px;
   padding: 0 23px;
   box-shadow: 0 0 0 1px #a99e75, inset 2px 2px 10px #22251a, inset -5px -5px 10px 2px #f6fdd6;
@@ -1157,7 +1157,7 @@ body {
   font-family: "DM Sans", "Segoe UI", serif;
   font-weight: 400;
   font-size: 21px;
-  background: #D7D7D7;
+  background: transparent;
   border: none;
   outline: none;
   text-shadow: 1px 1px 0 #fff;
@@ -1378,6 +1378,7 @@ body {
 }
 
 .basket-list-shadow {
+  min-height: 846px;
   box-shadow: 0 0 0 1px #6c6958, inset 3px 3px 10px 2px #3f3b31, inset -3px -3px 10px 2px #bdb891;
 }
 
@@ -1673,6 +1674,9 @@ body {
   }
 }
 @media (max-width: 463px) {
+  .note-list {
+    max-height: 863px;
+  }
   .note-list__wrapper {
     padding: 15px 20px 0;
   }
@@ -1720,6 +1724,10 @@ body {
     font-size: 16px;
     color: #000;
     text-shadow: 1px 1px 0 #fff;
+  }
+  .note-list__container .delete-all {
+    padding: 0 9px 0 9px;
+    font-size: 14px;
   }
   .note-list__container .sort-img-down {
     margin-left: 4px;
