@@ -1010,6 +1010,12 @@
 @media (max-width: 800px) {
   .nav-row {
     padding: 0 12px;
+    box-shadow: 0 0 0 1px #a99e75,
+    inset 1px 1px 5px #22251a, inset -2px -2px 5px 1px #f6fdd6;
+  }
+  .nav-row-dark {
+    box-shadow: 0 0 0 1px #353a36,
+    inset 2px 2px 5px 1px #22251a, inset -1px -1px 5px #576044;
   }
   .nav-list {
     column-gap: 12px;
